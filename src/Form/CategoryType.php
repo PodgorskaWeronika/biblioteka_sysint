@@ -1,7 +1,6 @@
 <?php
 /**
  * Category type.
- *
  */
 
 namespace App\Form;
@@ -14,7 +13,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class CategoryType.
- *
  */
 class CategoryType extends AbstractType
 {

@@ -1,23 +1,28 @@
 <?php
 /**
- * Task entity.
+ * Tag entity.
  */
 
 namespace App\Entity;
 
+use App\Entity\Tag;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class Task.
+ * Class Tag.
  *
- * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
- * @ORM\Table(name="tasks")
+ * @ORM\Entity(repositoryClass="App\Repository\TagRepository")
+ * @ORM\Table(name="tags")
+ *
+ * @UniqueEntity(fields={"title"})
  */
-class Task
+class Tag
 {
     /**
      * Primary key.
@@ -37,6 +42,8 @@ class Task
      *
      * @ORM\Column(type="datetime")
      *
+     * @Assert\DateTime
+     *
      * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
@@ -48,9 +55,31 @@ class Task
      *
      * @ORM\Column(type="datetime")
      *
+     * @Assert\Type(type="\DateTimeInterface")
+     *
      * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
+
+    /**
+     * Code.
+     *
+     * @var string
+     *
+     * @ORM\Column(
+     *     type="string",
+     *     length=64,
+     * )
+     *
+     * @Assert\Type(type="string")
+     * @Assert\Length(
+     *     min="3",
+     *     max="64",
+     * )
+     *
+     * @Gedmo\Slug(fields={"title"})
+     */
+    private $code;
 
     /**
      * Title.
@@ -59,43 +88,47 @@ class Task
      *
      * @ORM\Column(
      *     type="string",
-     *     length=255,
+     *     length=64,
+     * )
+     *
+     * @Assert\Type(type="string")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min="3",
+     *     max="64",
      * )
      */
     private $title;
 
     /**
-     * Category.
+     * Tasks.
      *
-     * @var \App\Entity\Category Category
+     * @var \Doctrine\Common\Collections\ArrayCollection|\App\Entity\Task[] Tasks
      *
-     * @ORM\ManyToOne(
-     *     targetEntity="App\Entity\Category",
-     *     inversedBy="tasks",
-     * )
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToMany(targetEntity="App\Entity\Task", mappedBy="tags")
+     *
      */
-    private $category;
+    private $tasks;
 
     /**
      * Tags.
      *
-     * @var array
+     * @var \Doctrine\Common\Collections\ArrayCollection|\App\Entity\Tag[] Tags
      *
-     * @ORM\ManyToMany(
-     *     targetEntity="App\Entity\Tag",
-     *     inversedBy="tasks",
-     * )
-     * @ORM\JoinTable(name="tasks_tags")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Task", mappedBy="tags")
+     *
+     *
      */
     private $tags;
-
     /**
-     * Task constructor.
+     * Tag constructor.
      */
+
     public function __construct()
     {
+        $this->tasks = new ArrayCollection();
         $this->tags = new ArrayCollection();
+
     }
 
     /**
@@ -149,6 +182,26 @@ class Task
     }
 
     /**
+     * Getter for Code.
+     *
+     * @return string|null Code
+     */
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    /**
+     * Setter for Code.
+     *
+     * @param string $code Code
+     */
+    public function setCode(string $code): void
+    {
+        $this->code = $code;
+    }
+
+    /**
      * Getter for Title.
      *
      * @return string|null Title
@@ -169,35 +222,49 @@ class Task
     }
 
     /**
-     * Getter for category.
+     * Getter for tasks.
      *
-     * @return \App\Entity\Category|null Category
+     * @return \Doctrine\Common\Collections\Collection|\App\Entity\Task[] Tasks collection
      */
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
 
-    /**
-     * Setter for category.
-     *
-     * @param \App\Entity\Category|null $category Category
-     */
-    public function setCategory(?Category $category): void
+    public function getTasks(): Collection
     {
-        $this->category = $category;
+        return $this->tasks;
     }
-
     /**
      * Getter for tags.
      *
-     * @return \Doctrine\Common\Collections\Collection|\App\Entity\Tag[] Tags collection
+     * @return \Doctrine\Common\Collections\Collection|\App\Entity\Tag[] Tag collection
      */
     public function getTags(): Collection
     {
         return $this->tags;
     }
+    /**
+     * Add task to collection.
+     *
+     * @param \App\Entity\Task $task Task entity
+     */
+    public function addTask(Task $task): void
+    {
+        if (!$this->tasks->contains($task)) {
+            $this->tasks[] = $task;
+            $task->addTag($this);
+        }
+    }
 
+    /**
+     * Remove task from collection.
+     *
+     * @param \App\Entity\Task $task Task entity
+     */
+    public function removeTask(Task $task): void
+    {
+        if ($this->tasks->contains($task)) {
+            $this->tasks->removeElement($task);
+            $task->removeTag($this);
+        }
+    }
     /**
      * Add tag to collection.
      *
@@ -207,6 +274,7 @@ class Task
     {
         if (!$this->tags->contains($tag)) {
             $this->tags[] = $tag;
+            $tag->addTask($this);
         }
     }
 

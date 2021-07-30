@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{'title_tag_details'|trans({'%id%': tag.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+<h1>{{'title_tag_details'|trans({'%id%': tag.id|default('')}) }}</h1>
+{% if tag is defined and tag|length %}
+<dl class="dl-horizontal">
+    <dt>{{'label_id'|trans}}</dt>
+    <dd>{{ tag.id|trans }}</dd>
+    <dt>{{'label_created_at'|trans}}</dt>
+    <dd>{{ tag.createdAt|format_date('long') }}</dd>
+    <dt>{{'label_updated_at'|trans}}</dt>
+    <dd>{{ tag.updatedAt|format_date('long') }}</dd>
+    <dt>{{ 'label_title'|trans }}</dt>
+    <dd>{{ tag.title }}</dd>
+</dl>
+
+<button type="button" class="btn btn-light">
+    <a href="{{ url('tag_index') }}" title="{{ 'action_back_to_list'|trans }}">
+        {{ 'action_back_to_list'|trans }}
+    </a>
+</button>
+
+{% else %}
+<p>
+    {{ 'message_empty_list' | trans}}
+</p>
+
+
+{% endif %}
+{% endblock %}

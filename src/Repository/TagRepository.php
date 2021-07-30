@@ -1,24 +1,25 @@
 <?php
 /**
- * Task repository.
+ * Tag repository.
  */
 
 namespace App\Repository;
 
-use App\Entity\Task;
+use App\Entity\Category;
+use App\Entity\Tag;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
 
 /**
- * Class TaskRepository.
+ * Class TagRepository.
  *
- * @method Task|null find($id, $lockMode = null, $lockVersion = null)
- * @method Task|null findOneBy(array $criteria, array $orderBy = null)
- * @method Task[]    findAll()
- * @method Task[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Tag|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Tag|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Tag[]    findAll()
+ * @method Tag[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TaskRepository extends ServiceEntityRepository
+class TagRepository extends ServiceEntityRepository
 {
     /**
      * Items per page.
@@ -32,43 +33,29 @@ class TaskRepository extends ServiceEntityRepository
     const PAGINATOR_ITEMS_PER_PAGE = 3;
 
     /**
-     * TaskRepository constructor.
+     * CategoryRepository constructor.
      *
-     * @param \Doctrine\Common\Persistence\ManagerRegistry $registry Manager registry
+     * @param \Doctrine\Persistence\ManagerRegistry $registry Manager registry
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Task::class);
+        parent::__construct($registry, Tag::class);
     }
 
     /**
      * Save record.
      *
-     * @param \App\Entity\Task $task Task entity
+     * @param \App\Entity\Tag $tag Tag entity
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function save(Task $task): void
+
+    public function save(Tag $tag): void
     {
-        $this->_em->persist($task);
+        $this->_em->persist($tag);
         $this->_em->flush();
     }
-
-    /**
-     * Delete record.
-     *
-     * @param \App\Entity\Task $task Task entity
-     *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     */
-    public function delete(Task $task): void
-    {
-        $this->_em->remove($task);
-        $this->_em->flush();
-    }
-
     /**
      * Query all records.
      *
@@ -77,7 +64,7 @@ class TaskRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('task.updatedAt', 'DESC');
+            ->orderBy('tag.updatedAt', 'DESC');
     }
 
     /**
@@ -89,6 +76,21 @@ class TaskRepository extends ServiceEntityRepository
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return $queryBuilder ?? $this->createQueryBuilder('task');
+        return $queryBuilder ?? $this->createQueryBuilder('tag');
+    }
+
+    /**
+     * Delete record.
+     *
+     * @param \App\Entity\Tag $tag Tag entity
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+
+    public function delete(Tag $tag): void
+    {
+        $this->_em->remove($tag);
+        $this->_em->flush();
     }
 }

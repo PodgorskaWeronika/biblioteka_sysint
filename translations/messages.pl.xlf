@@ -104,7 +104,39 @@
              </trans-unit>
              <trans-unit id="title_task_list">
                  <source>title_task_list</source>
-                 <target>Task list</target>
+                 <target>Lista zadań</target>
+             </trans-unit>
+             <trans-unit id="title_task_create">
+                 <source>title_task_create</source>
+                 <target>Dodaj nowe zadanie</target>
+             </trans-unit>
+             <trans-unit id="title_task_delete">
+                 <source>title_task_delete</source>
+                 <target>Usuń zadanie</target>
+             </trans-unit>
+             <trans-unit id="title_task_edit">
+                 <source>title_task_edit</source>
+                 <target>Edytuj zadanie</target>
+             </trans-unit>
+             <trans-unit id="title_tag_create">
+                 <source>title_tag_create</source>
+                 <target>Dodaj nowy tag</target>
+             </trans-unit>
+             <trans-unit id="title_tag_edit">
+                 <source>title_tag_edit</source>
+                 <target>Edytuj tag</target>
+             </trans-unit>
+             <trans-unit id="title_tag_delete">
+                 <source>title_tag_delete</source>
+                 <target>Usuń tag</target>
+             </trans-unit>
+             <trans-unit id="title_tag_list">
+                 <source>title_tag_list</source>
+                 <target>Lista tagów</target>
+             </trans-unit>
+             <trans-unit id="title_tag_details">
+                 <source>title_tag_details</source>
+                 <target>Szczegóły tagu</target>
              </trans-unit>
         </body>
     </file>

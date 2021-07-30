@@ -19,7 +19,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label_created_at'|trans, 'task.createdAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label_updated_at'|trans, 'task.updatedAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label_title'|trans, 'task.title') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label_category'|trans, 'category.title') }}</th>
+                <th>{{ 'label_category'|trans }}</th>
                 <th>{{ 'label_actions'|trans }}</th>
             </tr>
             </thead>
@@ -35,6 +35,14 @@
                         <a href="{{ url('task_show', {id: task.id}) }}" title="{{ 'action_view'|trans }}">
                             {{ 'action_view'|trans }}
                         </a>
+                        {{  " | "  }}
+                        <a href="{{  url('task_edit', {id: task.id}) }}" title="{{  'action_edit'|trans }}">
+                            {{'action_edit'|trans}}
+                        </a>
+                        {{  " | "  }}
+                        <a href="{{ url('task_delete', {id: task.id}) }}" title="{{ 'action_delete'|trans }}">
+                            {{ 'action_delete'|trans }}
+                         </a>
                     </td>
                 </tr>
             {% endfor %}
@@ -45,9 +53,26 @@
             {{ knp_pagination_render(pagination) }}
         </div>
 
+        <div class="navigation text-center">
+            <button type="button" class="btn btn-light">
+                <a href="{{ url('task_create') }}" title="{{ 'title_task_create'|trans }}">
+                    {{ 'title_task_create'|trans }}
+                </a>
+            </button>
+        </div>
+
     {% else %}
         <p>
             {{ 'message_empty_list'|trans }}
         </p>
+
+        <div class="navigation text-center">
+            <button type="button" class="btn btn-light">
+                <a href="{{ url('task_create') }}" title="{{ 'title_task_create'|trans }}">
+                    {{ 'title_task_create'|trans }}
+                </a>
+            </button>
+        </div>
+
     {% endif %}
 {% endblock %}

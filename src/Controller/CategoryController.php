@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Category controller.
  */
@@ -181,6 +180,7 @@ class CategoryController extends AbstractController
     {
         if ($category->getTasks()->count()) {
             $this->addFlash('warning', 'message_category_contains_tasks');
+
             return $this->redirectToRoute('category_index');
         }
 

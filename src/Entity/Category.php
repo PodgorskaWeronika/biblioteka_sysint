@@ -83,15 +83,12 @@ class Category
 
 
     /**
-     * @ORM\OneToMany(
-     *     targetEntity=Task::class,
-     *     mappedBy="category")
+     * @ORM\OneToMany(targetEntity=Task::class, mappedBy="category", fetch="EXTRA_LAZY")
      *
      */
     private $tasks;
 
     /**
-     *
      * @ORM\Column(type="string", length=64)
      *
      * @Assert\Type(type="string")
