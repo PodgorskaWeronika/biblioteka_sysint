@@ -67,7 +67,7 @@ class Task
     /**
      * Category.
      *
-     * @var \App\Entity\Category Category
+     * @var Category Category
      *
      * @ORM\ManyToOne(
      *     targetEntity="App\Entity\Category",
@@ -80,7 +80,7 @@ class Task
     /**
      * Tags.
      *
-     * @var array
+     * @var ArrayCollection|Tag[] Tags
      *
      * @ORM\ManyToMany(
      *     targetEntity="App\Entity\Tag",
@@ -111,7 +111,7 @@ class Task
     /**
      * Getter for Created At.
      *
-     * @return \DateTimeInterface|null Created at
+     * @return DateTimeInterface|null Created at
      */
     public function getCreatedAt(): ?DateTimeInterface
     {
@@ -121,7 +121,7 @@ class Task
     /**
      * Setter for Created at.
      *
-     * @param \DateTimeInterface $createdAt Created at
+     * @param DateTimeInterface $createdAt Created at
      */
     public function setCreatedAt(DateTimeInterface $createdAt): void
     {
@@ -131,7 +131,7 @@ class Task
     /**
      * Getter for Updated at.
      *
-     * @return \DateTimeInterface|null Updated at
+     * @return DateTimeInterface|null Updated at
      */
     public function getUpdatedAt(): ?DateTimeInterface
     {
@@ -141,7 +141,7 @@ class Task
     /**
      * Setter for Updated at.
      *
-     * @param \DateTimeInterface $updatedAt Updated at
+     * @param DateTimeInterface $updatedAt Updated at
      */
     public function setUpdatedAt(DateTimeInterface $updatedAt): void
     {
@@ -171,7 +171,7 @@ class Task
     /**
      * Getter for category.
      *
-     * @return \App\Entity\Category|null Category
+     * @return Category|null Category
      */
     public function getCategory(): ?Category
     {
@@ -181,7 +181,7 @@ class Task
     /**
      * Setter for category.
      *
-     * @param \App\Entity\Category|null $category Category
+     * @param Category|null $category Category
      */
     public function setCategory(?Category $category): void
     {
@@ -191,7 +191,7 @@ class Task
     /**
      * Getter for tags.
      *
-     * @return \Doctrine\Common\Collections\Collection|\App\Entity\Tag[] Tags collection
+     * @return Collection|Tag[] Tags collection
      */
     public function getTags(): Collection
     {
@@ -201,7 +201,7 @@ class Task
     /**
      * Add tag to collection.
      *
-     * @param \App\Entity\Tag $tag Tag entity
+     * @param Tag $tag Tag entity
      */
     public function addTag(Tag $tag): void
     {
@@ -209,7 +209,6 @@ class Task
             $this->tags[] = $tag;
         }
     }
-
     /**
      * Remove tag from collection.
      *

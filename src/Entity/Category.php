@@ -20,6 +20,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="categories")
  *
  * @UniqueEntity(fields={"title"})
+ *
  */
 class Category
 {

@@ -11,6 +11,7 @@ use App\Repository\TagRepository;
 use App\Form\FormType;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,6 +22,7 @@ use Knp\Component\Pager\PaginatorInterface;
  * Class TagController.
  *
  * @Route("/tag")
+ * @IsGranted("ROLE_ADMIN")
  */
 
 class TagController extends AbstractController

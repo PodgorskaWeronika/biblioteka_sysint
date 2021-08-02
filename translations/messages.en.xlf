@@ -59,6 +59,18 @@
                 <source>label_category</source>
                 <target>Category</target>
             </trans-unit>
+            <trans-unit id="label_tag">
+                <source>label_tag</source>
+                <target>Tags</target>
+            </trans-unit>
+            <trans-unit id="label_task">
+                <source>label_task</source>
+                <target>Tasks</target>
+            </trans-unit>
+            <trans-unit id="title_create">
+                <source>title_create</source>
+                <target>Create new</target>
+            </trans-unit>
             <trans-unit id="action_save">
                 <source>action_save</source>
                 <target>Save</target>
@@ -118,6 +130,14 @@
              <trans-unit id="title_tag_details">
                  <source>title_tag_details</source>
                  <target>Tag details</target>
+             </trans-unit>
+             <trans-unit id="label_none">
+                 <source>label_none</source>
+                 <target>Select from list</target>
+             </trans-unit>
+             <trans-unit id="message_created_successfully">
+                 <source>message_created_successfully</source>
+                 <target>Message created succesfully</target>
              </trans-unit>
         </body>
     </file>

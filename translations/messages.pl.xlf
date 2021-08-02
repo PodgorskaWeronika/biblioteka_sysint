@@ -58,6 +58,18 @@
                 <source>label_category</source>
                 <target>Kategoria</target>
             </trans-unit>
+            <trans-unit id="label_tag">
+                <source>label_tag</source>
+                <target>Tagi</target>
+            </trans-unit>
+            <trans-unit id="label_task">
+                <source>label_task</source>
+                <target>Zadania</target>
+            </trans-unit>
+            <trans-unit id="title_create">
+                <source>title_create</source>
+                <target>Dodaj</target>
+            </trans-unit>
             <trans-unit id="action_save">
                 <source>action_save</source>
                 <target>Zapisz</target>
@@ -65,6 +77,14 @@
             <trans-unit id="action_edit">
                 <source>action_edit</source>
                 <target>Edytuj</target>
+            </trans-unit>
+            <trans-unit id="action_logout">
+                <source>action_logout</source>
+                <target>Wyloguj się</target>
+            </trans-unit>
+            <trans-unit id="action_login">
+                <source>action_login</source>
+                <target>Zaloguj się</target>
             </trans-unit>
             <trans-unit id="action_delete">
                 <source>action_delete</source>
@@ -137,6 +157,14 @@
              <trans-unit id="title_tag_details">
                  <source>title_tag_details</source>
                  <target>Szczegóły tagu</target>
+             </trans-unit>
+             <trans-unit id="label_none">
+                 <source>label_none</source>
+                 <target> ---Wybierz z listy--- </target>
+             </trans-unit>
+             <trans-unit id="message_created_successfully">
+                 <source>message_created_successfully</source>
+                 <target>Dodanie elementu powiodło się</target>
              </trans-unit>
         </body>
     </file>

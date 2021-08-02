@@ -5,7 +5,7 @@
 
 namespace App\Entity;
 
-use App\Entity\Tag;
+
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -103,9 +103,12 @@ class Tag
     /**
      * Tasks.
      *
-     * @var \Doctrine\Common\Collections\ArrayCollection|\App\Entity\Task[] Tasks
+     * @var ArrayCollection|Task[] Tasks
      *
-     * @ORM\ManyToMany(targetEntity="App\Entity\Task", mappedBy="tags")
+     * @ORM\ManyToMany(
+     *     targetEntity="App\Entity\Task",
+     *     mappedBy="tags"
+     * )
      *
      */
     private $tasks;
@@ -113,22 +116,23 @@ class Tag
     /**
      * Tags.
      *
-     * @var \Doctrine\Common\Collections\ArrayCollection|\App\Entity\Tag[] Tags
+     * @var ArrayCollection|Tag[] Tags
      *
-     * @ORM\ManyToMany(targetEntity="App\Entity\Task", mappedBy="tags")
-     *
-     *
+     * @ORM\ManyToMany(
+     *     targetEntity="App\Entity\Task",
+     *     mappedBy="tags"
+     * )
+     * @ORM\JoinTable(name="tasks_tags")
      */
     private $tags;
+
     /**
      * Tag constructor.
      */
-
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
         $this->tags = new ArrayCollection();
-
     }
 
     /**
@@ -144,7 +148,7 @@ class Tag
     /**
      * Getter for Created At.
      *
-     * @return \DateTimeInterface|null Created at
+     * @return DateTimeInterface|null Created at
      */
     public function getCreatedAt(): ?DateTimeInterface
     {
@@ -154,7 +158,7 @@ class Tag
     /**
      * Setter for Created at.
      *
-     * @param \DateTimeInterface $createdAt Created at
+     * @param DateTimeInterface $createdAt Created at
      */
     public function setCreatedAt(DateTimeInterface $createdAt): void
     {
@@ -164,7 +168,7 @@ class Tag
     /**
      * Getter for Updated at.
      *
-     * @return \DateTimeInterface|null Updated at
+     * @return DateTimeInterface|null Updated at
      */
     public function getUpdatedAt(): ?DateTimeInterface
     {
@@ -174,7 +178,7 @@ class Tag
     /**
      * Setter for Updated at.
      *
-     * @param \DateTimeInterface $updatedAt Updated at
+     * @param DateTimeInterface $updatedAt Updated at
      */
     public function setUpdatedAt(DateTimeInterface $updatedAt): void
     {
@@ -224,9 +228,8 @@ class Tag
     /**
      * Getter for tasks.
      *
-     * @return \Doctrine\Common\Collections\Collection|\App\Entity\Task[] Tasks collection
+     * @return \Doctrine\Common\Collections\Collection|Task[] Tasks collection
      */
-
     public function getTasks(): Collection
     {
         return $this->tasks;
@@ -234,7 +237,7 @@ class Tag
     /**
      * Getter for tags.
      *
-     * @return \Doctrine\Common\Collections\Collection|\App\Entity\Tag[] Tag collection
+     * @return \Doctrine\Common\Collections\Collection|Tag[] Tag collection
      */
     public function getTags(): Collection
     {
@@ -243,7 +246,7 @@ class Tag
     /**
      * Add task to collection.
      *
-     * @param \App\Entity\Task $task Task entity
+     * @param Task $task Task entity
      */
     public function addTask(Task $task): void
     {
@@ -254,21 +257,9 @@ class Tag
     }
 
     /**
-     * Remove task from collection.
-     *
-     * @param \App\Entity\Task $task Task entity
-     */
-    public function removeTask(Task $task): void
-    {
-        if ($this->tasks->contains($task)) {
-            $this->tasks->removeElement($task);
-            $task->removeTag($this);
-        }
-    }
-    /**
      * Add tag to collection.
      *
-     * @param \App\Entity\Tag $tag Tag entity
+     * @param Tag $tag Tag entity
      */
     public function addTag(Tag $tag): void
     {
@@ -278,15 +269,4 @@ class Tag
         }
     }
 
-    /**
-     * Remove tag from collection.
-     *
-     * @param \App\Entity\Tag $tag Tag entity
-     */
-    public function removeTag(Tag $tag): void
-    {
-        if ($this->tags->contains($tag)) {
-            $this->tags->removeElement($tag);
-        }
-    }
 }
