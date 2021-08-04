@@ -6,9 +6,11 @@
 namespace App\Repository;
 
 use App\Entity\Task;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class TaskRepository.
@@ -70,6 +72,24 @@ class TaskRepository extends ServiceEntityRepository
     }
 
     /**
+     * Query tasks by author.
+     *
+     * @param \App\Entity\User $user User entity
+     *
+     * @return \Doctrine\ORM\QueryBuilder Query builder
+     */
+    public function queryByAuthor(User $user): QueryBuilder
+    {
+        $queryBuilder = $this->queryAll();
+
+        $queryBuilder->andWhere('task.author = :author')
+            ->setParameter('author', $user);
+
+        return $queryBuilder;
+    }
+
+//zapytanie do pobierania listy rekordów
+    /**
      * Query all records.
      *
      * @return \Doctrine\ORM\QueryBuilder Query builder
@@ -77,6 +97,10 @@ class TaskRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
+            ->select('task', 'category')
+            //  select('task', 'category', 'tags')
+            ->join('task.category', 'category')
+//            ->join('tasks.tags', 'tags')
             ->orderBy('task.updatedAt', 'DESC');
     }
 

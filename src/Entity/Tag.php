@@ -112,19 +112,19 @@ class Tag
      *
      */
     private $tasks;
-
-    /**
-     * Tags.
-     *
-     * @var ArrayCollection|Tag[] Tags
-     *
-     * @ORM\ManyToMany(
-     *     targetEntity="App\Entity\Task",
-     *     mappedBy="tags"
-     * )
-     * @ORM\JoinTable(name="tasks_tags")
-     */
-    private $tags;
+//
+//    /**
+//     * Tags.
+//     *
+//     * @var ArrayCollection|Tag[] Tags
+//     *
+//     * @ORM\ManyToMany(
+//     *     targetEntity="App\Entity\Task",
+//     *     mappedBy="tags"
+//     * )
+//     * @ORM\JoinTable(name="tasks_tags")
+//     */
+//    private $tags;
 
     /**
      * Tag constructor.
@@ -132,7 +132,7 @@ class Tag
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
-        $this->tags = new ArrayCollection();
+//        $this->tags = new ArrayCollection();
     }
 
     /**
@@ -234,15 +234,15 @@ class Tag
     {
         return $this->tasks;
     }
-    /**
-     * Getter for tags.
-     *
-     * @return \Doctrine\Common\Collections\Collection|Tag[] Tag collection
-     */
-    public function getTags(): Collection
-    {
-        return $this->tags;
-    }
+//    /**
+//     * Getter for tags.
+//     *
+//     * @return \Doctrine\Common\Collections\Collection|Tag[] Tag collection
+//     */
+//    public function getTags(): Collection
+//    {
+//        return $this->tags;
+//    }
     /**
      * Add task to collection.
      *
@@ -256,17 +256,29 @@ class Tag
         }
     }
 
+//    /**
+//     * Add tag to collection.
+//     *
+//     * @param Tag $tag Tag entity
+//     */
+//    public function addTag(Tag $tag): void
+//    {
+//        if (!$this->tags->contains($tag)) {
+//            $this->tags[] = $tag;
+//            $tag->addTask($this);
+//        }
+//    }
+
     /**
-     * Add tag to collection.
+     * Remove task from collection.
      *
-     * @param Tag $tag Tag entity
+     * @param \App\Entity\Task $task Task entity
      */
-    public function addTag(Tag $tag): void
+    public function removeTask(Task $task): void
     {
-        if (!$this->tags->contains($tag)) {
-            $this->tags[] = $tag;
-            $tag->addTask($this);
+        if ($this->tasks->contains($task)) {
+            $this->tasks->removeElement($task);
+            $task->removeTag($this);
         }
     }
-
 }

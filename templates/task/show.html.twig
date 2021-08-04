@@ -14,9 +14,10 @@
             <dd>{{ task.createdAt|format_date('long') }}</dd>
             <dt>{{ 'label_updated_at'|trans }}</dt>
             <dd>{{ task.updatedAt|format_date('long') }}</dd>
-
             <dt>{{ 'label_title'|trans }}</dt>
             <dd>{{  task.title }}</dd>
+            <dt>{{ 'label_tag'|trans }}</dt>
+{#            <dd>{{  task.title.tag }}</dd>#}
         </dl>
         <p>
             <a href="{{ url('task_index') }}" title="{{ 'action_back_to_list'|trans }}">
