@@ -25,7 +25,7 @@
                             <a class="dropdown-item" href="{{ url('task_create')}}">{{ 'title_create'|trans }} </a>
                         </div>
                     </li>
-                    {% if is_granted('ROLE_ADMIN') %}
+                    {% if is_granted("ROLE_ADMIN") %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ 'label_category'|trans }}
@@ -35,6 +35,8 @@
                                 <a class="dropdown-item" href="{{ url('category_create')}}">{{ 'title_create'|trans }} </a>
                             </div>
                         </li>
+                    {% endif %}
+                    {% if is_granted("ROLE_ADMIN") %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ 'label_tag'|trans }}

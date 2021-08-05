@@ -22,6 +22,7 @@ use Knp\Component\Pager\PaginatorInterface;
  * Class TagController.
  *
  * @Route("/tag")
+ *
  * @IsGranted("ROLE_ADMIN")
  */
 

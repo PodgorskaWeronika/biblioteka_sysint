@@ -20,6 +20,8 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class TaskController.
  *
  * @Route("/task")
+ *
+ * @IsGranted("ROLE_USER")
  */
 
 class TaskController extends AbstractController
