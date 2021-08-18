@@ -163,6 +163,10 @@
                  <source>label_name</source>
                  <target>Name and surname</target>
              </trans-unit>
+             <trans-unit id="label_book">
+                 <source>label_book</source>
+                 <target>Books</target>
+             </trans-unit>
              <trans-unit id="title_author_edit">
                  <source>title_author_edit</source>
                  <target>Edit author</target>
@@ -178,6 +182,18 @@
              <trans-unit id="message_author_contains_book">
                  <source>message_author_contains_book</source>
                  <target>Author contains books</target>
+             </trans-unit>
+             <trans-unit id="message_updated_successfully">
+                 <source>message_updated_successfully</source>
+                 <target>Updated succesfully</target>
+             </trans-unit>
+             <trans-unit id="title_book_details">
+                 <source>title_book_details</source>
+                 <target>Book details</target>
+             </trans-unit>
+             <trans-unit id="message.deleted_successfully">
+                 <source>message.deleted_successfully</source>
+                 <target>Deleted succesfully</target>
              </trans-unit>
         </body>
     </file>

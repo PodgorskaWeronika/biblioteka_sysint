@@ -44,6 +44,24 @@
                                 <a class="dropdown-item" href="{{ url('tag_create')}}">{{ 'title_create'|trans }} </a>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ 'label_book'|trans }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('book_index')}}">{{ 'title_book_list'|trans }} </a>
+                                <a class="dropdown-item" href="{{ url('book_create')}}">{{ 'title_create'|trans }} </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ 'label_author'|trans }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('author_index')}}">{{ 'title_author_list'|trans }} </a>
+                                <a class="dropdown-item" href="{{ url('author_create')}}">{{ 'title_create'|trans }} </a>
+                            </div>
+                        </li>
                     {% endif %}
                 </ul>
             </div>

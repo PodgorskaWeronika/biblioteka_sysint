@@ -91,6 +91,29 @@ class Book
     private $updatedAt;
 
     /**
+     * Category.
+     *
+     * @var Category Category
+     *
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="book")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+//    /**
+//     * Category.
+//     *
+//     * @var Category Category
+//     *
+//     * @ORM\ManyToOne(
+//     *     targetEntity="App\Entity\Category",
+//     *     inversedBy="book",
+//     * )
+//     * @ORM\JoinColumn(nullable=false)
+//     */
+//    private $category;
+
+    /**
      * Getter for Id.
      *
      * @return int|null Result
@@ -179,7 +202,25 @@ class Book
     {
         $this->updatedAt = $updatedAt;
     }
+    /**
+     * Getter for category.
+     *
+     * @return Category|null Category
+     */
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
 
+    /**
+     * Setter for category.
+     *
+     * @param Category|null $category Category
+     */
+    public function setCategory(?Category $category): void
+    {
+        $this->category = $category;
+    }
     /**
      * Transform to string
      *
@@ -190,4 +231,16 @@ class Book
     {
         return (string) $this->getId();
     }
+
+//    public function getCategory(): ?Category
+//    {
+//        return $this->category;
+//    }
+//
+//    public function setCategory(?Category $category): self
+//    {
+//        $this->category = $category;
+//
+//        return $this;
+//    }
 }

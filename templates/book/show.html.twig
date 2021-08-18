@@ -16,6 +16,10 @@
             <dd>{{ book.updatedAt|format_date('long') }}</dd>
             <dt>{{ 'label_title'|trans }}</dt>
             <dd>{{  book.title }}</dd>
+            <dt>{{ 'label_author'|trans }}</dt>
+            <dd>{{  book.author.name }}</dd>
+            <dt>{{ 'label_category'|trans }}</dt>
+            <dd>{{  book.category.title }}</dd>
         </dl>
         <p>
             <a href="{{ url('book_index') }}" title="{{ 'action_back_to_list'|trans }}">

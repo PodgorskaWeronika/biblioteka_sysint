@@ -7,6 +7,7 @@ namespace App\Form;
 
 use App\Entity\Author;
 use App\Entity\Book;
+use App\Entity\Category;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -53,6 +54,19 @@ class BookType extends AbstractType
                 'required' => true,
                 'placeholder' => 'label_none',
                 'attr' => ['max_length' => 255],
+            ]
+        );
+        $builder->add(
+            'category',
+            EntityType::class,
+            [
+                'class' => Category::class,
+                'choice_label' => function ($category) {
+                    return $category->getTitle();
+                },
+                'label' => 'label_category',
+                'placeholder' => 'label_none',
+                'required' => true,
             ]
         );
     }

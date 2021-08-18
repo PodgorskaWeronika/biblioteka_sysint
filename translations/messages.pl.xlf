@@ -190,6 +190,10 @@
                  <source>label_name</source>
                  <target>Imię i nazwisko</target>
              </trans-unit>
+             <trans-unit id="label_book">
+                 <source>label_book</source>
+                 <target>Książki</target>
+             </trans-unit>
              <trans-unit id="title_author_edit">
                  <source>title_author_edit</source>
                  <target>Edytuj Autora</target>
@@ -205,6 +209,18 @@
              <trans-unit id="message_author_contains_book">
                  <source>message_author_contains_book</source>
                  <target>Nie można usunąć. Do autora są przypisane książki</target>
+             </trans-unit>
+             <trans-unit id="message_updated_successfully">
+                 <source>message_updated_successfully</source>
+                 <target>Aktualizacja elementu powiodła się</target>
+             </trans-unit>
+             <trans-unit id="title_book_details">
+                 <source>title_book_details</source>
+                 <target>Szczegóły książki</target>
+             </trans-unit>
+             <trans-unit id="message.deleted_successfully">
+                 <source>message.deleted_successfully</source>
+                 <target>Usunięcie elementu powiodło się</target>
              </trans-unit>
         </body>
     </file>

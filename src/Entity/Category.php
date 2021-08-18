@@ -103,13 +103,19 @@ class Category
      */
     private $code;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Book::class, mappedBy="category")
+     */
+    private $book;
+
 
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
+        $this->book = new ArrayCollection();
     }
 
-     /**
+    /**
      * Getter for Id.
      *
      * @return int|null Result
@@ -217,6 +223,36 @@ class Category
     public function setCode(string $code): self
     {
         $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Book[]
+     */
+    public function getBook(): Collection
+    {
+        return $this->book;
+    }
+
+    public function addBook(Book $book): self
+    {
+        if (!$this->book->contains($book)) {
+            $this->book[] = $book;
+            $book->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBook(Book $book): self
+    {
+        if ($this->book->removeElement($book)) {
+            // set the owning side to null (unless already changed)
+            if ($book->getCategory() === $this) {
+                $book->setCategory(null);
+            }
+        }
 
         return $this;
     }
