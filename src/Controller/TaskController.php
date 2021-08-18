@@ -153,9 +153,9 @@ class TaskController extends AbstractController
     /**
      * Delete action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request            HTTP request
-     * @param \App\Entity\Category                      $category           Category entity
-     * @param \App\Repository\CategoryRepository        $categoryRepository Category repository
+     * @param \Symfony\Component\HttpFoundation\Request $request        HTTP request
+     * @param \App\Entity\Task                          $task           Task entity
+     * @param \App\Repository\TaskRepository            $taskRepository Task repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -172,13 +172,7 @@ class TaskController extends AbstractController
 
     public function delete(Request $request, Task $task, TaskRepository $taskRepository): Response
     {
-//        if ($Task->getTasks()->count()) {
-//            $this->addFlash('warning', 'message_category_contains_tasks');
-//
-//            return $this->redirectToRoute('task_index');
-//        }
-
-        $form = $this->createForm(TaskType::class, $task, ['method' => 'DELETE']);
+        $form = $this->createForm(FormType::class, $task, ['method' => 'DELETE']);
         $form->handleRequest($request);
 
         if ($request->isMethod('DELETE') && !$form->isSubmitted()) {
@@ -187,7 +181,7 @@ class TaskController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $taskRepository->delete($task);
-            $this->addFlash('success', 'message.deleted_successfully');
+            $this->addFlash('success', 'message_deleted_successfully');
 
             return $this->redirectToRoute('task_index');
         }

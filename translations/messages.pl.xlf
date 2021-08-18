@@ -166,6 +166,46 @@
                  <source>message_created_successfully</source>
                  <target>Dodanie elementu powiodło się</target>
              </trans-unit>
+             <trans-unit id="title_book_list">
+                 <source>title_book_list</source>
+                 <target>Katalog książek</target>
+             </trans-unit>
+             <trans-unit id="title_book_create">
+                 <source>title_book_create</source>
+                 <target>Dodaj książkę</target>
+             </trans-unit>
+             <trans-unit id="label_author">
+                 <source>label_author</source>
+                 <target>Autor</target>
+             </trans-unit>
+             <trans-unit id="title_author_list">
+                 <source>title_author_list</source>
+                 <target>Lista autorów</target>
+             </trans-unit>
+             <trans-unit id="title_author_create">
+                 <source>title_author_create</source>
+                 <target>Dodaj autora</target>
+             </trans-unit>
+             <trans-unit id="label_name">
+                 <source>label_name</source>
+                 <target>Imię i nazwisko</target>
+             </trans-unit>
+             <trans-unit id="title_author_edit">
+                 <source>title_author_edit</source>
+                 <target>Edytuj Autora</target>
+             </trans-unit>
+             <trans-unit id="title_author_delete">
+                 <source>title_author_delete</source>
+                 <target>Usuń Autora</target>
+             </trans-unit>
+             <trans-unit id="title_author_details">
+                 <source>title_author_details</source>
+                 <target>Szczegóły o autorze</target>
+             </trans-unit>
+             <trans-unit id="message_author_contains_book">
+                 <source>message_author_contains_book</source>
+                 <target>Nie można usunąć. Do autora są przypisane książki</target>
+             </trans-unit>
         </body>
     </file>
 </xliff>

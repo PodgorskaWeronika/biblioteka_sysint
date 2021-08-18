@@ -1,28 +1,26 @@
 <?php
 /**
- * Category entity.
+ * Author entity.
  */
-
 namespace App\Entity;
 
 use DateTimeInterface;
+use App\Repository\AuthorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+
 
 /**
- * Class Category.
+ * Class Author.
  *
- * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
- * @ORM\Table(name="categories")
- *
- * @UniqueEntity(fields={"title"})
- *
+ * @ORM\Entity(repositoryClass=AuthorRepository::class)
+ * @ORM\Table(name="author")
  */
-class Category
+class Author
 {
     /**
      * Primary key.
@@ -36,24 +34,25 @@ class Category
     private $id;
 
     /**
-     * Title.
+     * Name.
      *
      * @var string
      *
      * @ORM\Column(
      *     type="string",
-     *     length=64,
-     * )
+     *     length=255,
+     *     )
      *
      * @Assert\NotBlank
      * @Assert\Type(type="string")
      * @Assert\Length(
      *     min="3",
-     *     max="64",
+     *     max="255",
      *     )
-     *
      */
-    private $title;
+    private $Name;
+
+
     /**
      * Created at.
      *
@@ -65,8 +64,8 @@ class Category
      *
      * @Gedmo\Timestampable(on="create")
      */
-    private $createdAt;
 
+    private $createdAt;
 
     /**
      * Updated at.
@@ -81,35 +80,30 @@ class Category
      */
     private $updatedAt;
 
-
-
+    //
+//    /**
+//     * @var string
+//     *
+//     * @ORM\OneToMany(targetEntity=Book::class, mappedBy="author")
+//     *
+//     *
+//     */
+//    private $author;
 
     /**
-     * @ORM\OneToMany(targetEntity=Task::class, mappedBy="category", fetch="EXTRA_LAZY")
+     * @var ArrayCollection|Book[]
      *
+     * @ORM\OneToMany(targetEntity=Book::class, mappedBy="author", fetch="EXTRA_LAZY")
      */
-    private $tasks;
-
-    /**
-     * @ORM\Column(type="string", length=64)
-     *
-     * @Assert\Type(type="string")
-     * @Assert\Length(
-     *     min="3",
-     *     max="64",
-     *     )
-     *
-     * @Gedmo\Slug(fields={"title"})
-     */
-    private $code;
-
+    private $book;
 
     public function __construct()
     {
-        $this->tasks = new ArrayCollection();
+//        $this->author = new ArrayCollection();
+        $this->book = new ArrayCollection();
     }
 
-     /**
+    /**
      * Getter for Id.
      *
      * @return int|null Result
@@ -142,9 +136,9 @@ class Category
     /**
      * Getter for Updated at.
      *
-     * @return \DateTimeInterface|null Updated at
+     * @return \DateTimeInterface|null  Updated at
      */
-    public function getUpdatedAt(): ?DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
@@ -160,64 +154,72 @@ class Category
     }
 
     /**
-     * Getter for Title.
+     * Getter for Name.
      *
-     * @return string|null Title
+     * @return string|null  Name
      */
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->Name;
     }
 
     /**
-     * Setter for Title.
+     *  Setter for Name.
      *
-     * @param string $title Title
+     * @param string $Name Name
      */
-    public function setTitle(string $title): void
+    public function setName(string $Name): void
     {
-        $this->title = $title;
+        $this->Name = $Name;
     }
 
     /**
-     * @return Collection|Task[]
+     * @return Collection|Book[]
      */
-    public function getTasks(): Collection
+    public function getBook(): Collection
     {
-        return $this->tasks;
+        return $this->book;
     }
 
-    public function addTask(Task $task): self
+    public function addBook(Book $book): self
     {
-        if (!$this->tasks->contains($task)) {
-            $this->tasks[] = $task;
-            $task->setCategory($this);
+        if (!$this->book->contains($book)) {
+            $this->book[] = $book;
+            $book->setAuthor($this);
         }
 
         return $this;
     }
 
-    public function removeTask(Task $task): self
+    public function removeBook(Book $book): self
     {
-        if ($this->tasks->removeElement($task)) {
+        if ($this->book->removeElement($book)) {
             // set the owning side to null (unless already changed)
-            if ($task->getCategory() === $this) {
-                $task->setCategory(null);
+            if ($book->getAuthor() === $this) {
+                $book->setAuthor(null);
             }
         }
 
         return $this;
     }
 
-    public function getCode(): ?string
+    /**
+     * Transform to string
+     *
+     * @return string
+     */
+
+    public function __toString()
     {
-        return $this->code;
+        return (string) $this->getId();
     }
 
-    public function setCode(string $code): self
-    {
-        $this->code = $code;
-
-        return $this;
-    }
 }
+//    /**
+//     * @return Collection|Book[]
+//     */
+//    public function getBook(): Collection
+//    {
+//        return $this->book;
+//    }
+//}

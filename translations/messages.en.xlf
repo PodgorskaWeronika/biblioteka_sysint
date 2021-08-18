@@ -139,6 +139,46 @@
                  <source>message_created_successfully</source>
                  <target>Message created succesfully</target>
              </trans-unit>
+             <trans-unit id="title_book_list">
+                 <source>title_book_list</source>
+                 <target>Book list</target>
+             </trans-unit>
+             <trans-unit id="title_book_create">
+                 <source>title_book_create</source>
+                 <target>Create book</target>
+             </trans-unit>
+             <trans-unit id="label_author">
+                 <source>label_author</source>
+                 <target>Author</target>
+             </trans-unit>
+             <trans-unit id="title_author_list">
+                 <source>title_author_list</source>
+                 <target>Author list</target>
+             </trans-unit>
+             <trans-unit id="title_author_create">
+                 <source>title_author_create</source>
+                 <target>Create author</target>
+             </trans-unit>
+             <trans-unit id="label_name">
+                 <source>label_name</source>
+                 <target>Name and surname</target>
+             </trans-unit>
+             <trans-unit id="title_author_edit">
+                 <source>title_author_edit</source>
+                 <target>Edit author</target>
+             </trans-unit>
+             <trans-unit id="title_author_delete">
+                 <source>title_author_delete</source>
+                 <target>Delete author</target>
+             </trans-unit>
+             <trans-unit id="title_author_details">
+                 <source>title_author_details</source>
+                 <target>Author details</target>
+             </trans-unit>
+             <trans-unit id="message_author_contains_book">
+                 <source>message_author_contains_book</source>
+                 <target>Author contains books</target>
+             </trans-unit>
         </body>
     </file>
 </xliff>
