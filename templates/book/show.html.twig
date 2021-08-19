@@ -20,6 +20,15 @@
             <dd>{{  book.author.name }}</dd>
             <dt>{{ 'label_category'|trans }}</dt>
             <dd>{{  book.category.title }}</dd>
+            <dt>{{ 'label_tags'|trans }}</dt>
+            <dd> {% if book.tags is defined and book.tags|length %}
+                    {%  for tag in book.tags %}
+                        {{ tag.title }}
+                    {%  endfor %}
+                {%  else %}
+                    {{ "brak tagów" }}
+                {% endif %}
+            </dd>
         </dl>
         <p>
             <a href="{{ url('book_index') }}" title="{{ 'action_back_to_list'|trans }}">

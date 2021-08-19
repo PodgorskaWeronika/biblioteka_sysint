@@ -21,6 +21,7 @@
                 <th>{{ 'label_author'|trans }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label_title'|trans, 'book.title') }}</th>
                 <th>{{ 'label_category'|trans }}</th>
+                <th>{{ 'label_tag' |trans }}</th>
                 <th>{{ 'label_actions'|trans }}</th>
             </tr>
             </thead>
@@ -33,6 +34,15 @@
                     <td>{{ book.author.name }}</td>
                     <td>{{ book.title }}</td>
                     <td>{{ book.category.title }}</td>
+                    <td>
+                        {% if book.tags is defined and book.tags|length %}
+                            {%  for tag in book.tags %}
+                                {{ tag.title }}
+                            {%  endfor %}
+                        {%  else %}
+
+                        {% endif %}
+                    </td>
                     <td>
                         <a href="{{ url('book_show', {id: book.id}) }}" title="{{ 'action_view'|trans }}">
                             {{ 'action_view'|trans }}
