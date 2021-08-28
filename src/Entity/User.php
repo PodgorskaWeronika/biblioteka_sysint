@@ -24,6 +24,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  *
  * @UniqueEntity(fields={"email"})
+ *
  */
 class User implements UserInterface
 {
@@ -85,13 +86,22 @@ class User implements UserInterface
      *
      * @var string
      *
-     * @ORM\Column(type="string")
-
-     * @Assert\NotBlank
-     * @Assert\Type(type="string")
-     * @SecurityAssert\UserPassword
+     * @ORM\Column(
+     *     type="string",
+     *     nullable=false)
      */
+//@SecurityAssert\UserPassword
     private $password;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
+//    /**
+//     * @ORM\Column(type="string", length=255)
+//     */
+//    private $plainPassword;
 
     /**
      * Getter for the Id.
@@ -166,7 +176,7 @@ class User implements UserInterface
      *
      * @see UserInterface
      *
-     * @return string|null Password
+     * @return string Password
      */
     public function getPassword(): string
     {
@@ -199,4 +209,35 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+//    /**
+//     * @return string
+//     */
+//    public function getPlainPassword(): ?string
+//    {
+//        return $this->plainPassword;
+//    }
+//
+//    /**
+//     * @param string $plainPassword
+//     * @return $this
+//     */
+//    public function setPlainPassword(string $plainPassword): self
+//    {
+//        $this->plainPassword = $plainPassword;
+//
+//        return $this;
+//    }
 }

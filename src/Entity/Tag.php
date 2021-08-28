@@ -5,7 +5,6 @@
 
 namespace App\Entity;
 
-
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -116,15 +115,20 @@ class Tag
     /**
      * Tags.
      *
-     * @var ArrayCollection|Tag[] Tags
+     * @var Array Tags
      *
      * @ORM\ManyToMany(
      *     targetEntity="App\Entity\Task",
      *     mappedBy="tags"
      * )
-     * @ORM\JoinTable(name="tasks_tags")
+     *
      */
     private $tags;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Book::class, mappedBy="tags")
+     */
+    private $book;
 
     /**
      * Tag constructor.
@@ -132,7 +136,8 @@ class Tag
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
-        $this->tags = new ArrayCollection();
+//        $this->tags = new ArrayCollection();
+$this->book = new ArrayCollection();
     }
 
     /**
@@ -237,11 +242,21 @@ class Tag
     /**
      * Getter for tags.
      *
-     * @return \Doctrine\Common\Collections\Collection|Tag[] Tag collection
+     * @return Tag Tag collection
      */
-    public function getTags(): Collection
+    public function getTags(): ?string
     {
         return $this->tags;
+    }
+
+    /**
+     * Setter for Tag.
+     *
+     * @param string $tags Tags
+     */
+    public function setTags(string $tags): void
+    {
+        $this->title = $tags;
     }
     /**
      * Add task to collection.
@@ -257,16 +272,68 @@ class Tag
     }
 
     /**
-     * Add tag to collection.
+     * Remove task from collection.
      *
-     * @param Tag $tag Tag entity
+     * @param \App\Entity\Task $task Task entity
      */
-    public function addTag(Tag $tag): void
+    public function removeTask(Task $task): void
     {
-        if (!$this->tags->contains($tag)) {
-            $this->tags[] = $tag;
-            $tag->addTask($this);
+        if ($this->tasks->contains($task)) {
+            $this->tasks->removeElement($task);
+            $task->removeTag($this);
         }
     }
 
+//    /**
+//     * Add tag to collection.
+//     *
+//     * @param Tag $tag Tag entity
+//     */
+//        public function addTag(Tag $tag): void
+//        {
+//            if (!$this->tags->contains($tag)) {
+//                $this->tags[] = $tag;
+//                $tag->addTask($this);
+//            }
+//        }
+//
+//    /**
+//     * Remove task from collection.
+//     *
+//     * @param \App\Entity\Task $task Task entity
+//     */
+//    public function removeTask(Task $task): void
+//    {
+//        if ($this->tasks->contains($task)) {
+//            $this->tasks->removeElement($task);
+//            $task->removeTag($this);
+//        }
+//    }
+
+/**
+ * @return Collection|Book[]
+ */
+public function getBook(): Collection
+{
+    return $this->book;
+}
+
+public function addBook(Book $book): self
+{
+    if (!$this->book->contains($book)) {
+        $this->book[] = $book;
+        $book->addTag($this);
+    }
+
+    return $this;
+}
+
+public function removeBook(Book $book): self
+{
+    if ($this->book->removeElement($book)) {
+        $book->removeTag($this);
+    }
+
+    return $this;
+}
 }

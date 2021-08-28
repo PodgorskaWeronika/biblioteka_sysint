@@ -38,7 +38,7 @@
                             {{'action_edit'|trans}}
                         </a>
                         {{  " | "  }}
-                        {% if not tag.tasks|length %}
+                        {% if not tag.book|length %}
                             <a href="{{ url('tag_delete', {id: tag.id}) }}" title="{{ 'action_delete'|trans }}">
                                 {{ 'action_delete'|trans }}
                             </a>

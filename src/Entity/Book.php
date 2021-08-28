@@ -7,6 +7,8 @@ namespace App\Entity;
 
 use DateTimeInterface;
 use App\Repository\BookRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -16,6 +18,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass=BookRepository::class)
  *
  * @ORM\Table(name="book")
+ *
+ *
  */
 class Book
 {
@@ -95,10 +99,27 @@ class Book
      *
      * @var Category Category
      *
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="book")
+     * @ORM\ManyToOne(
+     *     targetEntity=Category::class,
+     *     inversedBy="book")
+     *
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="book")
+     */
+    private $tags;
+
+    /**
+     * Book constructor.
+     */
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
+
 
 //    /**
 //     * Category.
@@ -243,4 +264,38 @@ class Book
 //
 //        return $this;
 //    }
+
+    /**
+     * Getter for tags.
+     *
+     * @return Collection|Tag[] Tags collection
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Add tag to collection.
+     *
+     * @param Tag $tag Tag entity
+     */
+    public function addTag(Tag $tag): void
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
+    }
+
+    /**
+     * Remove tag from collection.
+     *
+     * @param Tag $tag  Tag entity.
+     */
+    public function removeTag(Tag $tag): void
+    {
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
+        }
+    }
 }

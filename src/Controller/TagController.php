@@ -181,8 +181,8 @@ class TagController extends AbstractController
 
     public function delete(Request $request, Tag $tag, TagRepository $tagRepository): Response
     {
-        if ($tag->getTasks()->count()) {
-            $this->addFlash('warning', 'message_category_contains_tasks');
+        if ($tag->getBook()->count()) {
+            $this->addFlash('warning', 'message_category_contains_book');
 
             return $this->redirectToRoute('tag_index');
         }

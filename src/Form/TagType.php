@@ -39,21 +39,21 @@ class TagType extends AbstractType
                 'attr' => ['max_length' => 64],
             ]
         );
-        $builder->add(
-            'tags',
-            EntityType::class,
-            [
-                'class' => Tag::class,
-                'choice_label' => function ($tag) {
-                    return $tag->getTitle();
-                },
-                'label' => 'label_tags',
-                'placeholder' => 'label_none',
-                'required' => false,
-                'expanded' => true,
-                'multiple' => true,
-            ]
-        );
+//        $builder->add(
+//            'tags',
+//            EntityType::class,
+//            [
+//                'class' => Tag::class,
+//                'choice_label' => function ($tag) {
+//                    return $tag->getTitle();
+//                },
+//                'label' => 'label_tags',
+//                'placeholder' => 'label_none',
+//                'required' => false,
+//                'expanded' => true,
+//                'multiple' => true,
+//            ]
+//        );
     }
 
     /**
