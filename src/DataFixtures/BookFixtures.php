@@ -21,7 +21,7 @@ class BookFixtures extends AbstractBaseFixtures implements DependentFixtureInter
      */
     public function loadData(ObjectManager $manager): void
     {
-        $this->createMany(50, 'book', function ($i) {
+        $this->createMany(50, 'book', function($i) {
             $book = new Book();
             $book->setTitle($this->faker->sentence);
             $book->setCreatedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
