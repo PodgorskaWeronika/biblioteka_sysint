@@ -7,6 +7,7 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Repository\BookRepository;
+use App\Repository\CommentRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use App\Form\FormType;
 use App\Form\BookType;
@@ -25,9 +26,9 @@ class BookController extends AbstractController
     /**
      * Index action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request        HTTP request
-     * @param \App\Repository\BookRepository            $bookRepository Book repository
-     * @param \Knp\Component\Pager\PaginatorInterface   $paginator      Paginator
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP request
+     * @param \App\Repository\BookRepository $bookRepository Book repository
+     * @param \Knp\Component\Pager\PaginatorInterface $paginator Paginator
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -53,7 +54,8 @@ class BookController extends AbstractController
 
     /**
      * show action
-     * @param Book $Book
+     * @param Book $book
+     * @param CommentRepository $commentRepository
      * @return Response
      * @Route(
      *     "/{id}",
@@ -65,17 +67,31 @@ class BookController extends AbstractController
 
     public function show(Book $book): Response
     {
+//        $comments = $book->getComments();
+//        foreach ($comments as $comment)
+//        {
+//            dump($comments);
+//        }
+//        die;
+//
+//        $comments = [
+//            'I ate a normal rock once. It did NOT taste like bacon!',
+//            'Woohoo! I\'m going on an all-asteroid diet!',
+//            'I like bacon too! Buy some from my site! bakinsomebacon.com',
+//        ];
+
         return $this->render(
             'book/show.html.twig',
-            ['book' => $book]
+            ['book' => $book,]
+//             'comments' => $comments,]
         );
     }
 
     /**
      * Create action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request            HTTP request
-     * @param \App\Repository\BookRepository            $bookRepository     Book repository
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP request
+     * @param \App\Repository\BookRepository $bookRepository Book repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -113,9 +129,9 @@ class BookController extends AbstractController
     /**
      * Edit action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request            HTTP request
-     * @param \App\Entity\Book                          $book               Book entity
-     * @param \App\Repository\BookRepository            $bookRepository     Book repository
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP request
+     * @param \App\Entity\Book $book Book entity
+     * @param \App\Repository\BookRepository $bookRepository Book repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -155,9 +171,9 @@ class BookController extends AbstractController
     /**
      * Delete action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request            HTTP request
-     * @param \App\Entity\Book                          $book               Book entity
-     * @param \App\Repository\BookRepository            $bookRepository     Book repository
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP request
+     * @param \App\Entity\Book $book Book entity
+     * @param \App\Repository\BookRepository $bookRepository Book repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -172,7 +188,7 @@ class BookController extends AbstractController
      * )
      */
 
-    public function delete(Request $request, Book $book, BookRepository$bookRepository): Response
+    public function delete(Request $request, Book $book, BookRepository $bookRepository): Response
     {
 
         $form = $this->createForm(BookType::class, $book, ['method' => 'DELETE']);

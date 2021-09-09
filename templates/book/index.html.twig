@@ -23,6 +23,7 @@
                 <th>{{ 'label_category'|trans }}</th>
                 <th>{{ 'label_tag' |trans }}</th>
                 <th>{{ 'label_actions'|trans }}</th>
+                <th>{{ 'label_comment'|trans }}</th>
             </tr>
             </thead>
             <tbody>
@@ -54,6 +55,11 @@
                         {{  " | "  }}
                         <a href="{{ url('book_delete', {id: book.id}) }}" title="{{ 'action_delete'|trans }}">
                             {{ 'action_delete'|trans }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url('comment_create') }}" title="{{ 'title_comment_create'|trans }}">
+                            {{ 'title_comment_create'|trans }}
                         </a>
                     </td>
                 </tr>

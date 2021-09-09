@@ -113,11 +113,24 @@ class Book
     private $tags;
 
     /**
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="book")
+     * @ORM\OrderBy({"createdAt" = "DESC"})
+     */
+    private $comments;
+//
+//    /**
+//     * @var string
+//     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="book")
+//     */
+//    private $comment;
+
+    /**
      * Book constructor.
      */
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
 
@@ -298,4 +311,72 @@ class Book
             $this->tags->removeElement($tag);
         }
     }
+
+//    /**
+//     * @return Collection|Comment[]
+//     */
+//    public function getComment(): Collection
+//    {
+//        return $this->comment;
+//    }
+//
+//    /**
+//     * @param Comment $comment
+//     * @return $this
+//     */
+//    public function addComment(Comment $comment): self
+//    {
+//        if (!$this->comment->contains($comment)) {
+//            $this->comment[] = $comment;
+//            $comment->setBook($this);
+//        }
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * @param Comment $comment
+//     * @return $this
+//     */
+//    public function removeComment(Comment $comment): self
+//    {
+//        if ($this->comment->removeElement($comment)) {
+//            // set the owning side to null (unless already changed)
+//            if ($comment->getBook() === $this) {
+//                $comment->setBook(null);
+//            }
+//        }
+//
+//        return $this;
+//    }
+
+/**
+ * @return Collection|Comment[]
+ */
+public function getComments(): Collection
+{
+    return $this->comments;
+}
+
+public function addComment(Comment $comment): self
+{
+    if (!$this->comments->contains($comment)) {
+        $this->comments[] = $comment;
+        $comment->setBook($this);
+    }
+
+    return $this;
+}
+
+public function removeComment(Comment $comment): self
+{
+    if ($this->comments->removeElement($comment)) {
+        // set the owning side to null (unless already changed)
+        if ($comment->getBook() === $this) {
+            $comment->setBook(null);
+        }
+    }
+
+    return $this;
+}
 }
