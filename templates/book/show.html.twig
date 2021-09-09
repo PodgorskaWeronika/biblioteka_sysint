@@ -30,14 +30,46 @@
                 {% endif %}
             </dd>
         </dl>
+
         <p>
             <a href="{{ url('book_index') }}" title="{{ 'action_back_to_list'|trans }}">
                 {{ 'action_back_to_list'|trans }}
             </a>
         </p>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navigation text-center">
+                    <button type="submit" class="btn btn-light">
+                        <a href="{{ url('comment_create') }}" title="{{ 'title_comment_create'|trans }}">
+                            {{ 'title_comment_create'|trans }}
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <h3><i class="pr-3 fa fa-comment"></i>{{ book.comments|length }} Comments</h3>
+
+            {% for comment in book.comments %}
+            <div class="row">
+            <div class="col-sm-12">
+                <div class="comment-container d-inline-block pl-3 align-top">
+                    <span class="commenter-name"><b>{{ comment.userName }}</b></span>
+                    <dd><small>{{ book.createdAt|format_date('long') }}</small></dd>
+                    <span class="comment"> {{ comment.content }}</span>
+                    <p><a href="#">Reply</a></p>
+                </div>
+            </div>
+            </div>
+        {% endfor %}
+
+
     {% else %}
         <p>
             {{ 'message_item_not_found'|trans }}
         </p>
     {% endif %}
+
 {% endblock %}
+

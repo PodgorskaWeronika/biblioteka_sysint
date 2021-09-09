@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title_category_list'|trans }}
+    {{ 'title_comment_list'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title_category_list'|trans }}</h1>
+    <h1>{{ 'title_comment_list'|trans }}</h1>
     {% if pagination is defined and pagination.items|length %}
 
         <div class="navigation text-center">
@@ -15,34 +15,36 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'label_id'|trans, 'book.id') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label_created_at'|trans, 'book.createdAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label_updated_at'|trans, 'book.updatedAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label_title'|trans, 'book.title') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label_id'|trans, 'comment.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label_created_at'|trans, 'comment.createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label_updated_at'|trans, 'comment.updatedAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label_content'|trans, 'comment.content') }}</th>
+                <th>{{ 'label_user'}}</th>
+                <th>{{ 'label_book' }}</th>
                 <th>{{ 'label_actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
-            {% for category in pagination.items %}
+            {% for comment in pagination.items %}
                 <tr>
-                    <td>{{ category.id }}</td>
-                    <td>{{ category.createdAt|format_date('long', locale='en') }}</td>
-                    <td>{{ category.updatedAt|format_date('long') }}</td>
-                    <td>{{ category.title }}</td>
+                    <td>{{ comment.id }}</td>
+                    <td>{{ comment.createdAt|format_date('long', locale='en') }}</td>
+                    <td>{{ comment.updatedAt|format_date('long') }}</td>
+                    <td>{{ comment.content }}</td>
+                    <td>{{ comment.user.username }}</td>
+                    <td>{{ comment.book.title }}</td>
                     <td>
-                        <a href="{{ url('category_show', {id: category.id}) }}" title="{{ 'action_view'|trans }}">
+                        <a href="{{ url('comment_show', {id: comment.id}) }}" title="{{ 'action_view'|trans }}">
                             {{ 'action_view'|trans }}
                         </a>
                         {{  " | "  }}
-                        <a href="{{  url('category_edit', {id: category.id}) }}" title="{{  'action_edit'|trans }}">
+                        <a href="{{  url('comment_edit', {id: comment.id}) }}" title="{{  'action_edit'|trans }}">
                             {{'action_edit'|trans}}
                         </a>
                         {{  " | "  }}
-                        {% if not category.book|length %}
-                            <a href="{{ url('category_delete', {id: category.id}) }}" title="{{ 'action_delete'|trans }}">
-                                {{ 'action_delete'|trans }}
-                            </a>
-                        {% endif %}
+                        <a href="{{ url('comment_delete', {id: comment.id}) }}" title="{{ 'action_delete'|trans }}">
+                            {{ 'action_delete'|trans }}
+                        </a>
                     </td>
                 </tr>
             {% endfor %}
@@ -55,8 +57,8 @@
 
         <div class="navigation text-center">
             <button type="button" class="btn btn-light">
-                <a href="{{ url('category_create') }}" title="{{ 'title_category_create'|trans }}">
-                    {{ 'title_category_create'|trans }}
+                <a href="{{ url('comment_create') }}" title="{{ 'title_comment_create'|trans }}">
+                    {{ 'title_comment_create'|trans }}
                 </a>
             </button>
         </div>
@@ -71,8 +73,8 @@
 
         <div class="navigation text-center">
             <button type="button" class="btn btn-light">
-                <a href="{{ url('category_create') }}" title="{{ 'title_category_create'|trans }}">
-                    {{ 'title_category_create'|trans }}
+                <a href="{{ url('comment_create') }}" title="{{ 'title_comment_create'|trans }}">
+                    {{ 'title_comment_create'|trans }}
                 </a>
             </button>
         </div>

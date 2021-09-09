@@ -1,10 +1,10 @@
 {% include 'default/_form.html.twig' with {
-    page_title: 'title_category_create',
+    page_title: 'title_comment_create',
     attr: {
         method: 'POST',
-        action: url('category_create')
+        action: url('comment_create')
     },
     form: form,
     submit_label: 'action_create'|trans,
-    back_to_list_path: 'category_index',
+    back_to_list_path: 'comment_index',
 } %}

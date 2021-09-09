@@ -1,12 +1,12 @@
 
 {% include 'default/_form.html.twig' with {
-    page_title: 'title_category_delete',
-    page_title_param: {'%id%': category.id},
+    page_title: 'title_comment_delete',
+    page_title_param: {'%id%': comment.id},
     attr: {
         method: 'DELETE',
-        action: url('category_delete', {'id': category.id}),
+        action: url('comment_delete', {'id': comment.id}),
     },
     form: form,
     submit_label: 'action_delete'|trans,
-    back_to_list_path: 'category_index',
+    back_to_list_path: 'comment_index',
 } %}
