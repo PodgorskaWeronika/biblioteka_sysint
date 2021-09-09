@@ -195,6 +195,26 @@
                  <source>message.deleted_successfully</source>
                  <target>Deleted succesfully</target>
              </trans-unit>
+             <trans-unit id="title_comment_create">
+                 <source>title_comment_create</source>
+                 <target>Comment</target>
+             </trans-unit>
+             <trans-unit id="title_comment_list">
+                 <source>title_comment_list</source>
+                 <target>Comment list</target>
+             </trans-unit>
+             <trans-unit id="app_register">
+                 <source>app_register</source>
+                 <target>Register</target>
+             </trans-unit>
+             <trans-unit id="password">
+                 <source>password</source>
+                 <target>Password</target>
+             </trans-unit>
+             <trans-unit id="Agree terms">
+                 <source>Agree terms</source>
+                 <target>Agree terms</target>
+             </trans-unit>
         </body>
     </file>
 </xliff>

@@ -71,7 +71,8 @@
                 </div>
             {% else %}
                 <div>
-                    <a href="{{ url('app_login') }}">{{ 'action_login'|trans }}</a>
+                    <a href="{{ url('app_login') }}">{{ 'action_login'|trans }}</a> <a> | </a>
+                    <a href="{{ url('app_register') }}">{{ 'app_register'|trans }}</a>
                 </div>
             {% endif %}
         </nav>

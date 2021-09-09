@@ -222,6 +222,26 @@
                  <source>message.deleted_successfully</source>
                  <target>Usunięcie elementu powiodło się</target>
              </trans-unit>
+             <trans-unit id="title_comment_create">
+                 <source>title_comment_create</source>
+                 <target>Dodaj komentarz</target>
+             </trans-unit>
+             <trans-unit id="title_comment_list">
+                 <source>title_comment_list</source>
+                 <target>Lista komentarzy</target>
+             </trans-unit>
+             <trans-unit id="app_register">
+                 <source>app_register</source>
+                 <target>Zarejestruj się</target>
+             </trans-unit>
+             <trans-unit id="password">
+                 <source>password</source>
+                 <target>Hasło</target>
+             </trans-unit>
+             <trans-unit id="Agree terms">
+                 <source>Agree terms</source>
+                 <target>Zaakceptuj regulamin</target>
+             </trans-unit>
         </body>
     </file>
 </xliff>
