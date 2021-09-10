@@ -58,6 +58,10 @@
                 <source>label_category</source>
                 <target>Kategoria</target>
             </trans-unit>
+             <trans-unit id="label_comment">
+                 <source>label_comment</source>
+                 <target>Komentarze</target>
+             </trans-unit>
             <trans-unit id="label_tag">
                 <source>label_tag</source>
                 <target>Tagi</target>
@@ -242,6 +246,7 @@
                  <source>Agree terms</source>
                  <target>Zaakceptuj regulamin</target>
              </trans-unit>
+
         </body>
     </file>
 </xliff>

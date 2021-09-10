@@ -10,7 +10,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="{{  url('task_index') }}" title="Biblioteka">Biblioteka</a>
+            <a class="navbar-brand" href="{{  url('book_index') }}" title="Biblioteka">Biblioteka</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -18,11 +18,11 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ 'label_task'|trans }}
+                            {{ 'label_book'|trans }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ url('task_index')}}">{{ 'title_task_list'|trans }} </a>
-                            <a class="dropdown-item" href="{{ url('task_create')}}">{{ 'title_create'|trans }} </a>
+                            <a class="dropdown-item" href="{{ url('book_index')}}">{{ 'title_book_list'|trans }} </a>
+                            <a class="dropdown-item" href="{{ url('book_create')}}">{{ 'title_create'|trans }} </a>
                         </div>
                     </li>
                     {% if is_granted('ROLE_ADMIN') %}
@@ -42,15 +42,6 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ url('tag_index')}}">{{ 'title_tag_list'|trans }} </a>
                                 <a class="dropdown-item" href="{{ url('tag_create')}}">{{ 'title_create'|trans }} </a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ 'label_book'|trans }}
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ url('book_index')}}">{{ 'title_book_list'|trans }} </a>
-                                <a class="dropdown-item" href="{{ url('book_create')}}">{{ 'title_create'|trans }} </a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">

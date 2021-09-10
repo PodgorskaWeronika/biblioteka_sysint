@@ -215,6 +215,10 @@
                  <source>Agree terms</source>
                  <target>Agree terms</target>
              </trans-unit>
+             <trans-unit id="label_comment">
+                 <source>label_comment</source>
+                 <target>Comments</target>
+             </trans-unit>
         </body>
     </file>
 </xliff>
