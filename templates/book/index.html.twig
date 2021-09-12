@@ -23,9 +23,9 @@
                 <th>{{ 'label_category'|trans }}</th>
                 <th>{{ 'label_tag' |trans }}</th>
                 <th>{{ 'label_actions'|trans }}</th>
-            {% if is_granted('ROLE_USER') %}
-                <th>{{ 'label_comment'|trans }}</th>
-            {% endif %}
+{#            {% if is_granted('ROLE_USER') %}#}
+{#                <th>{{ 'label_comment'|trans }}</th>#}
+{#            {% endif %}#}
                 </tr>
             </thead>
             <tbody>
@@ -61,13 +61,13 @@
                         </a>
                         {% endif %}
                     </td>
-                    {% if is_granted('ROLE_USER') %}
-                    <td>
-                        <a href="{{ url('comment_create') }}" title="{{ 'title_comment_create'|trans }}">
-                            {{ 'title_comment_create'|trans }}
-                        </a>
-                    </td>
-                    {% endif %}
+{#                    {% if is_granted('ROLE_USER') %}#}
+{#                    <td>#}
+{#                        <a href="{{ url('comment_create', {id: book.id}) }}" title="{{ 'title_comment_create'|trans }}">#}
+{#                            {{ 'title_comment_create'|trans }}#}
+{#                        </a>#}
+{#                    </td>#}
+{#                    {% endif %}#}
                 </tr>
             {% endfor %}
             </tbody>
@@ -92,15 +92,25 @@
             {{ 'message_empty_list'|trans }}
         </p>
 
-    {% if is_granted('ROLE_ADMIN') %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="navigation text-center">
+                <button type="button" class="btn btn-light">
+                    <a href="{{ url('book_create') }}" title="{{ 'title_book_create'|trans }}">
+                        {{ 'title_book_create'|trans }}
+                    </a>
+                </button>
+            </div>
+        {% endif %}
+
+    {% endif %}
+    {% if is_granted('ROLE_USER') %}
         <div class="navigation text-center">
-            <button type="button" class="btn btn-light">
-                <a href="{{ url('book_create') }}" title="{{ 'title_book_create'|trans }}">
-                    {{ 'title_book_create'|trans }}
+            <button type="submit" class="btn btn-light">
+                <a href="{{ url('comment_create') }}" title="{{ 'title_comment_create'|trans }}">
+                    {{ 'title_comment_create'|trans }}
                 </a>
             </button>
+            <br><br><br>
         </div>
-    {% endif %}
-
     {% endif %}
 {% endblock %}

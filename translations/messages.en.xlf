@@ -219,6 +219,36 @@
                  <source>label_comment</source>
                  <target>Comments</target>
              </trans-unit>
+             <trans-unit id="title_comment_details">
+                 <source>title_comment_details</source>
+                 <target>Comment details</target>
+             </trans-unit>
+             <trans-unit id="label_user">
+                 <source>label_user</source>
+                 <target>User</target>
+             </trans-unit>
+             <trans-unit id="title_comment_edit">
+                 <source>title_comment_edit</source>
+                 <target>Edit comment</target>
+             </trans-unit>
+             <trans-unit id="title_comment_delete">
+                 <source>title_comment_delete</source>
+                 <target>Delete comment</target>
+             </trans-unit>
+             <trans-unit id="title_book_delete">
+                 <source>title_book_delete</source>
+                 <target>Delete book</target>
+             </trans-unit>
+             <trans-unit id="title_book_edit">
+                 <source>title_book_edit</source>
+                 <target>Edit book</target>
+             </trans-unit>
+             <trans-unit id="message_book_contains_comments">
+                 <source>message_book_contains_comments</source>
+                 <target>You can't delete this book.</target>
+             </trans-unit>
+
+
         </body>
     </file>
 </xliff>

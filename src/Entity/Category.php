@@ -80,15 +80,15 @@ class Category
      * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
-
-
-
-
-    /**
-     * @ORM\OneToMany(targetEntity=Task::class, mappedBy="category", fetch="EXTRA_LAZY")
-     *
-     */
-    private $tasks;
+//
+//
+//
+//
+//    /**
+//     * @ORM\OneToMany(targetEntity=Task::class, mappedBy="category", fetch="EXTRA_LAZY")
+//     *
+//     */
+//    private $tasks;
 
     /**
      * @ORM\Column(type="string", length=64)
@@ -111,7 +111,7 @@ class Category
 
     public function __construct()
     {
-        $this->tasks = new ArrayCollection();
+//        $this->tasks = new ArrayCollection();
         $this->book = new ArrayCollection();
     }
 
@@ -185,35 +185,35 @@ class Category
         $this->title = $title;
     }
 
-    /**
-     * @return Collection|Task[]
-     */
-    public function getTasks(): Collection
-    {
-        return $this->tasks;
-    }
-
-    public function addTask(Task $task): self
-    {
-        if (!$this->tasks->contains($task)) {
-            $this->tasks[] = $task;
-            $task->setCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTask(Task $task): self
-    {
-        if ($this->tasks->removeElement($task)) {
-            // set the owning side to null (unless already changed)
-            if ($task->getCategory() === $this) {
-                $task->setCategory(null);
-            }
-        }
-
-        return $this;
-    }
+//    /**
+//     * @return Collection|Task[]
+//     */
+//    public function getTasks(): Collection
+//    {
+//        return $this->tasks;
+//    }
+//
+//    public function addTask(Task $task): self
+//    {
+//        if (!$this->tasks->contains($task)) {
+//            $this->tasks[] = $task;
+//            $task->setCategory($this);
+//        }
+//
+//        return $this;
+//    }
+//
+//    public function removeTask(Task $task): self
+//    {
+//        if ($this->tasks->removeElement($task)) {
+//            // set the owning side to null (unless already changed)
+//            if ($task->getCategory() === $this) {
+//                $task->setCategory(null);
+//            }
+////        }
+//
+//        return $this;
+//    }
 
     public function getCode(): ?string
     {

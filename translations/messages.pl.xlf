@@ -196,7 +196,7 @@
              </trans-unit>
              <trans-unit id="label_book">
                  <source>label_book</source>
-                 <target>Książki</target>
+                 <target>Książka</target>
              </trans-unit>
              <trans-unit id="title_author_edit">
                  <source>title_author_edit</source>
@@ -246,7 +246,34 @@
                  <source>Agree terms</source>
                  <target>Zaakceptuj regulamin</target>
              </trans-unit>
-
+             <trans-unit id="title_comment_details">
+                 <source>title_comment_details</source>
+                 <target>Szczegóły komentarza</target>
+             </trans-unit>
+             <trans-unit id="label_user">
+                 <source>label_user</source>
+                 <target>Użytkownik</target>
+             </trans-unit>
+             <trans-unit id="title_comment_edit">
+                 <source>title_comment_edit</source>
+                 <target>Edytuj komentarz</target>
+             </trans-unit>
+             <trans-unit id="title_comment_delete">
+                 <source>title_comment_delete</source>
+                 <target>Usuń komentarz</target>
+             </trans-unit>
+             <trans-unit id="title_book_delete">
+                 <source>title_book_delete</source>
+                 <target>Usuń książkę</target>
+             </trans-unit>
+             <trans-unit id="title_book_edit">
+                 <source>title_book_edit</source>
+                 <target>Edytuj książkę</target>
+             </trans-unit>
+             <trans-unit id="message_book_contains_comments">
+                 <source>message_book_contains_comments</source>
+                 <target>Nie można usunąć. Książka posiada komentarze.</target>
+             </trans-unit>
         </body>
     </file>
 </xliff>

@@ -6,6 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Book;
+use App\Entity\Comment;
 use App\Repository\BookRepository;
 use App\Repository\CommentRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -174,6 +175,7 @@ class BookController extends AbstractController
      * @param \Symfony\Component\HttpFoundation\Request $request HTTP request
      * @param \App\Entity\Book $book Book entity
      * @param \App\Repository\BookRepository $bookRepository Book repository
+     * @param Comment $comment
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -190,6 +192,11 @@ class BookController extends AbstractController
 
     public function delete(Request $request, Book $book, BookRepository $bookRepository): Response
     {
+        if ($book->getComments()->count()) {
+            $this->addFlash('warning', 'message_book_contains_comments');
+
+            return $this->redirectToRoute('book_index');
+        }
 
         $form = $this->createForm(BookType::class, $book, ['method' => 'DELETE']);
         $form->handleRequest($request);

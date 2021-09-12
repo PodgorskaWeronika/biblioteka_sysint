@@ -99,31 +99,31 @@ class Tag
      */
     private $title;
 
-    /**
-     * Tasks.
-     *
-     * @var ArrayCollection|Task[] Tasks
-     *
-     * @ORM\ManyToMany(
-     *     targetEntity="App\Entity\Task",
-     *     mappedBy="tags"
-     * )
-     *
-     */
-    private $tasks;
+//    /**
+//     * Tasks.
+//     *
+//     * @var ArrayCollection|Task[] Tasks
+//     *
+//     * @ORM\ManyToMany(
+//     *     targetEntity="App\Entity\Task",
+//     *     mappedBy="tags"
+//     * )
+//     *
+//     */
+//    private $tasks;
 
-    /**
-     * Tags.
-     *
-     * @var Array Tags
-     *
-     * @ORM\ManyToMany(
-     *     targetEntity="App\Entity\Task",
-     *     mappedBy="tags"
-     * )
-     *
-     */
-    private $tags;
+//    /**
+//     * Tags.
+//     *
+//     * @var Array Tags
+//     *
+//     * @ORM\ManyToMany(
+//     *     targetEntity="App\Entity\Task",
+//     *     mappedBy="tags"
+//     * )
+//     *
+//     */
+//    private $tags;
 
     /**
      * @ORM\ManyToMany(targetEntity=Book::class, mappedBy="tags")
@@ -135,9 +135,9 @@ class Tag
      */
     public function __construct()
     {
-        $this->tasks = new ArrayCollection();
+//        $this->tasks = new ArrayCollection();
 //        $this->tags = new ArrayCollection();
-$this->book = new ArrayCollection();
+        $this->book = new ArrayCollection();
     }
 
     /**
@@ -230,24 +230,24 @@ $this->book = new ArrayCollection();
         $this->title = $title;
     }
 
-    /**
-     * Getter for tasks.
-     *
-     * @return \Doctrine\Common\Collections\Collection|Task[] Tasks collection
-     */
-    public function getTasks(): Collection
-    {
-        return $this->tasks;
-    }
-    /**
-     * Getter for tags.
-     *
-     * @return Tag Tag collection
-     */
-    public function getTags(): ?string
-    {
-        return $this->tags;
-    }
+//    /**
+//     * Getter for tasks.
+//     *
+//     * @return \Doctrine\Common\Collections\Collection|Task[] Tasks collection
+//     */
+//    public function getTasks(): Collection
+//    {
+//        return $this->tasks;
+//    }
+//    /**
+//     * Getter for tags.
+//     *
+//     * @return Tag Tag collection
+//     */
+//    public function getTags(): ?string
+//    {
+//        return $this->tags;
+//    }
 
     /**
      * Setter for Tag.
@@ -258,31 +258,31 @@ $this->book = new ArrayCollection();
     {
         $this->title = $tags;
     }
-    /**
-     * Add task to collection.
-     *
-     * @param Task $task Task entity
-     */
-    public function addTask(Task $task): void
-    {
-        if (!$this->tasks->contains($task)) {
-            $this->tasks[] = $task;
-            $task->addTag($this);
-        }
-    }
-
-    /**
-     * Remove task from collection.
-     *
-     * @param \App\Entity\Task $task Task entity
-     */
-    public function removeTask(Task $task): void
-    {
-        if ($this->tasks->contains($task)) {
-            $this->tasks->removeElement($task);
-            $task->removeTag($this);
-        }
-    }
+//   /**
+//     * Add task to collection.
+//     *
+//     * @param Task $task Task entity
+//     */
+//    public function addTask(Task $task): void
+//    {
+//        if (!$this->tasks->contains($task)) {
+//            $this->tasks[] = $task;
+//            $task->addTag($this);
+//         }
+//    }
+//
+//    /**
+//     * Remove task from collection.
+//     *
+//     * @param \App\Entity\Task $task Task entity
+//     */
+//    public function removeTask(Task $task): void
+//    {
+//        if ($this->tasks->contains($task)) {
+//            $this->tasks->removeElement($task);
+//            $task->removeTag($this);
+//        }
+//    }
 
 //    /**
 //     * Add tag to collection.

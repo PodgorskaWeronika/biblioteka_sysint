@@ -351,7 +351,7 @@ class Book
 //    }
 
 /**
- * @return Collection|Comment[]
+ * @return string
  */
 public function getComments(): Collection
 {

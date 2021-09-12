@@ -5,7 +5,11 @@
 
 namespace App\Form;
 
+use App\Entity\Book;
+use App\Entity\Category;
 use App\Entity\Comment;
+use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -36,6 +40,33 @@ class CommentType extends AbstractType
                 'label' => 'label_content',
                 'required' => true,
                 'attr' => ['max_length' => 255],
+            ]
+        );
+
+        $builder->add(
+            'book',
+            EntityType::class,
+            [
+                'class' => Book::class,
+                'choice_label' => function ($book) {
+                    return $book->getTitle();
+                },
+                'label' => 'label_book',
+                'placeholder' => 'label_none',
+                'required' => false,
+            ]
+        );
+
+        $builder->add(
+            'user',
+            EntityType::class,
+            [
+                'class' => User::class,
+                'choice_label' => function ($user) {
+                    return $user->getUsername();
+                },
+                'label' => 'label_user',
+                'required' => true,
             ]
         );
     }

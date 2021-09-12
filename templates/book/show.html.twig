@@ -29,25 +29,74 @@
                     {{ "brak tagów" }}
                 {% endif %}
             </dd>
-        </dl>
+            <dt>{{ 'label_comment'|trans }}</dt>
+
+
+            <tbody>
+            {% if book.comments is defined and book.comments|length %}
+{#                {%  for comment in book.comments %}#}
+
+                    <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>{{ 'label_created_at'|trans }}</th>
+                        <th>{{ 'label_updated_at'|trans }}</th>
+                        <th>{{ 'label_content'|trans }}</th>
+                        <th>{{ 'label_user'|trans}}</th>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <th>{{ 'label_actions'|trans }}</th>
+                        {% endif %}
+                    </tr>
+                    </thead>
+            <tbody>
+                {%  for comment in book.comments %}
+                <tr>
+                    <td>{{ comment.createdAt|format_date('long', locale='en') }}</td>
+                    <td>{{ comment.updatedAt|format_date('long') }}</td>
+                    <td>{{ comment.content }}</td>
+                    <td>{{ comment.user.username }}</td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <td>
+                            <a href="{{  url('comment_edit', {id: comment.id}) }}" title="{{  'action_edit'|trans }}">
+                                {{'action_edit'|trans}}
+                            </a>
+                            {{  " | "  }}
+                            <a href="{{ url('comment_delete', {id: comment.id}) }}" title="{{ 'action_delete'|trans }}">
+                                {{ 'action_delete'|trans }}
+                            </a>
+                        </td>
+                    {% endif %}
+                </tr>
+                    {% endfor %}
+                    </table>
+{#            {% endfor %}#}
+            </tbody>
+            {% else %}
+                {{ 'brak komentarzy' }}
+            {% endif %}
+
+
 
         <p>
+            <br><br>
             <a href="{{ url('book_index') }}" title="{{ 'action_back_to_list'|trans }}">
                 {{ 'action_back_to_list'|trans }}
             </a>
         </p>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="navigation text-center">
-                    <button type="submit" class="btn btn-light">
-                        <a href="{{ url('comment_create') }}" title="{{ 'title_comment_create'|trans }}">
-                            {{ 'title_comment_create'|trans }}
-                        </a>
-                    </button>
-                </div>
-            </div>
-        </div>
+{#    {% if is_granted('ROLE_USER') %}#}
+{#        <div class="row">#}
+{#            <div class="col-sm-12">#}
+{#                <div class="navigation text-center">#}
+{#                    <button type="submit" class="btn btn-light">#}
+{#                        <a href="{{ url('comment_create') }}" title="{{ 'title_comment_create'|trans }}">#}
+{#                            {{ 'title_comment_create'|trans }}#}
+{#                        </a>#}
+{#                    </button>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endif %}#}
 
     {% else %}
         <p>
@@ -56,4 +105,3 @@
     {% endif %}
 
 {% endblock %}
-

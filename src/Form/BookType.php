@@ -28,14 +28,16 @@ class BookType extends AbstractType
     private $tagsDataTransformer;
 
     /**
-     * TaskType constructor.
+     * BookType constructor.
      *
      * @param \App\Form\DataTransformer\TagsDataTransformer $tagsDataTransformer Tags data transformer
+     *
      */
     public function __construct(TagsDataTransformer $tagsDataTransformer)
     {
         $this->tagsDataTransformer = $tagsDataTransformer;
     }
+
 
     /**
      * Builds the form.
@@ -97,9 +99,11 @@ class BookType extends AbstractType
             ]
         );
 
+
         $builder->get('tags')->addModelTransformer(
             $this->tagsDataTransformer
         );
+
     }
 
     /**

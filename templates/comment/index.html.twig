@@ -19,8 +19,8 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label_created_at'|trans, 'comment.createdAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label_updated_at'|trans, 'comment.updatedAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label_content'|trans, 'comment.content') }}</th>
-                <th>{{ 'label_user'}}</th>
-                <th>{{ 'label_book' }}</th>
+                <th>{{ 'label_user'|trans}}</th>
+                <th>{{ 'label_book' |trans}}</th>
                 <th>{{ 'label_actions'|trans }}</th>
             </tr>
             </thead>
@@ -55,6 +55,7 @@
             {{ knp_pagination_render(pagination) }}
         </div>
 
+    {% if is_granted('ROLE_USER') %}
         <div class="navigation text-center">
             <button type="button" class="btn btn-light">
                 <a href="{{ url('comment_create') }}" title="{{ 'title_comment_create'|trans }}">
@@ -62,6 +63,7 @@
                 </a>
             </button>
         </div>
+    {% endif %}
 
 
 
@@ -71,6 +73,7 @@
             message: 'message_empty_list'|trans
         } %}
 
+    {% if is_granted('ROLE_USER') %}
         <div class="navigation text-center">
             <button type="button" class="btn btn-light">
                 <a href="{{ url('comment_create') }}" title="{{ 'title_comment_create'|trans }}">
@@ -78,6 +81,7 @@
                 </a>
             </button>
         </div>
+    {% endif %}
 
     {% endif %}
 {% endblock %}

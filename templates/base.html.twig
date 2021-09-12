@@ -10,7 +10,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="{{  url('book_index') }}" title="Biblioteka">Biblioteka</a>
+            <a class="navbar-brand" href="{{  url('book_index') }}" title="Katalog książek">Katalog książek</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,7 +22,9 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ url('book_index')}}">{{ 'title_book_list'|trans }} </a>
+                            {% if is_granted('ROLE_ADMIN') %}
                             <a class="dropdown-item" href="{{ url('book_create')}}">{{ 'title_create'|trans }} </a>
+                            {% endif %}
                         </div>
                     </li>
                     {% if is_granted('ROLE_ADMIN') %}
@@ -51,6 +53,14 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ url('author_index')}}">{{ 'title_author_list'|trans }} </a>
                                 <a class="dropdown-item" href="{{ url('author_create')}}">{{ 'title_create'|trans }} </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ 'label_comment'|trans }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('comment_index')}}">{{ 'title_comment_list'|trans }} </a>
                             </div>
                         </li>
                     {% endif %}

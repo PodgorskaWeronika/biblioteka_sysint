@@ -22,7 +22,7 @@ use Knp\Component\Pager\PaginatorInterface;
  * Class CommentController.
  *
  * @Route("/comment")
- * @IsGranted("ROLE_ADMIN")
+ * @IsGranted("ROLE_USER")
  */
 
 class CommentController extends AbstractController
@@ -110,7 +110,7 @@ class CommentController extends AbstractController
 
             $this->addFlash('success', 'message_created_successfully');
 
-            return $this->redirectToRoute('comment_index');
+            return $this->redirectToRoute('book_index');
         }
 
         return $this->render(
@@ -148,7 +148,7 @@ class CommentController extends AbstractController
 
             $this->addFlash('success', 'message_updated_successfully');
 
-            return $this->redirectToRoute('comment_index');
+            return $this->redirectToRoute('book_index');
         }
 
         return $this->render(
@@ -181,6 +181,10 @@ class CommentController extends AbstractController
 
     public function delete(Request $request, Comment $comment, CommentRepository $commentRepository): Response
     {
+      //   if ($comment->getBook()->count()) {
+      //          $this->addFlash('warning', 'message_comment_contains_book');
+      //          return $this->redirectToRoute('comment_index');
+      //      }
         $form = $this->createForm(CommentType::class, $comment, ['method' => 'DELETE']);
         $form->handleRequest($request);
 
@@ -192,7 +196,7 @@ class CommentController extends AbstractController
             $commentRepository->delete($comment);
             $this->addFlash('success', 'message.deleted_successfully');
 
-            return $this->redirectToRoute('comment_index');
+            return $this->redirectToRoute('book_index');
         }
 
         return $this->render(
