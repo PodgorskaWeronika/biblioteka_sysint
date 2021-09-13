@@ -9,13 +9,13 @@
         {% endblock %}
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2F4F4F">
             <a class="navbar-brand" href="{{  url('book_index') }}" title="Katalog książek">Katalog książek</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto ">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ 'label_book'|trans }}
@@ -63,13 +63,25 @@
                                 <a class="dropdown-item" href="{{ url('comment_index')}}">{{ 'title_comment_list'|trans }} </a>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ 'label_users'|trans }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ url('user_index')}}">{{ 'title_user_list'|trans }} </a>
+                            </div>
+                        </li>
                     {% endif %}
                 </ul>
             </div>
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <div class="col-md-4">
+                        <h4>Jesteś zalogowany jako: <b><em>{{ app.user.username }}</em></b></h4>
+                    </div>
                 <div>
                     <a href="{{ url('app_logout') }}">{{ 'action_logout'|trans }}</a>
                 </div>
+
             {% else %}
                 <div>
                     <a href="{{ url('app_login') }}">{{ 'action_login'|trans }}</a> <a> | </a>

@@ -8,6 +8,7 @@ namespace App\Form;
 use App\Entity\Author;
 use App\Entity\Book;
 use App\Entity\Category;
+use App\Entity\Tag;
 use App\Form\DataTransformer\TagsDataTransformer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -98,7 +99,6 @@ class BookType extends AbstractType
                 'attr' => ['max_length' => 128],
             ]
         );
-
 
         $builder->get('tags')->addModelTransformer(
             $this->tagsDataTransformer

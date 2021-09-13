@@ -54,7 +54,7 @@
                     <td>{{ comment.createdAt|format_date('long', locale='en') }}</td>
                     <td>{{ comment.updatedAt|format_date('long') }}</td>
                     <td>{{ comment.content }}</td>
-                    <td>{{ comment.user.username }}</td>
+                    <td>{{ comment.nick }}</td>
                     {% if is_granted('ROLE_ADMIN') %}
                         <td>
                             <a href="{{  url('comment_edit', {id: comment.id}) }}" title="{{  'action_edit'|trans }}">

@@ -100,35 +100,12 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
-     */
-    private $comments;
 
     /**
      * @ORM\Column(type="string", length=64)
      */
     private $userName;
 
-    public function __construct()
-    {
-        $this->comments = new ArrayCollection();
-    }
-
-//    /**
-//     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
-//     */
-//    private $Comment;
-//
-//    public function __construct()
-//    {
-//        $this->Comment = new ArrayCollection();
-//    }
-
-//    /**
-//     * @ORM\Column(type="string", length=255)
-//     */
-//    private $plainPassword;
 
     /**
      * Getter for the Id.
@@ -169,7 +146,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->userName;
     }
 
     /**
@@ -248,85 +225,6 @@ class User implements UserInterface
 
         return $this;
     }
-
-//    /**
-//     * @return string
-//     */
-//    public function getPlainPassword(): ?string
-//    {
-//        return $this->plainPassword;
-//    }
-//
-//    /**
-//     * @param string $plainPassword
-//     * @return $this
-//     */
-//    public function setPlainPassword(string $plainPassword): self
-//    {
-//        $this->plainPassword = $plainPassword;
-//
-//        return $this;
-//    }
-//
-///**
-// * @return Collection|Comment[]
-// */
-//public function getComment(): Collection
-//{
-//    return $this->Comment;
-//}
-//
-//public function addComment(Comment $comment): self
-//{
-//    if (!$this->Comment->contains($comment)) {
-//        $this->Comment[] = $comment;
-//        $comment->setUser($this);
-//    }
-//
-//    return $this;
-//}
-//
-//public function removeComment(Comment $comment): self
-//{
-//    if ($this->Comment->removeElement($comment)) {
-//        // set the owning side to null (unless already changed)
-//        if ($comment->getUser() === $this) {
-//            $comment->setUser(null);
-//        }
-//    }
-//
-//    return $this;
-//}
-
-/**
- * @return Collection|Comment[]
- */
-public function getComments(): Collection
-{
-    return $this->comments;
-}
-
-public function addComment(Comment $comment): self
-{
-    if (!$this->comments->contains($comment)) {
-        $this->comments[] = $comment;
-        $comment->setUser($this);
-    }
-
-    return $this;
-}
-
-public function removeComment(Comment $comment): self
-{
-    if ($this->comments->removeElement($comment)) {
-        // set the owning side to null (unless already changed)
-        if ($comment->getUser() === $this) {
-            $comment->setUser(null);
-        }
-    }
-
-    return $this;
-}
 
 public function setUserName(string $userName): self
 {

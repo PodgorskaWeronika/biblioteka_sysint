@@ -31,13 +31,13 @@
                     <td>{{ comment.createdAt|format_date('long', locale='en') }}</td>
                     <td>{{ comment.updatedAt|format_date('long') }}</td>
                     <td>{{ comment.content }}</td>
-                    <td>{{ comment.user.username }}</td>
+                    <td>{{ comment.nick }}</td>
                     <td>{{ comment.book.title }}</td>
                     <td>
-                        <a href="{{ url('comment_show', {id: comment.id}) }}" title="{{ 'action_view'|trans }}">
-                            {{ 'action_view'|trans }}
-                        </a>
-                        {{  " | "  }}
+{#                        <a href="{{ url('comment_show', {id: comment.id}) }}" title="{{ 'action_view'|trans }}">#}
+{#                            {{ 'action_view'|trans }}#}
+{#                        </a>#}
+{#                        {{  " | "  }}#}
                         <a href="{{  url('comment_edit', {id: comment.id}) }}" title="{{  'action_edit'|trans }}">
                             {{'action_edit'|trans}}
                         </a>

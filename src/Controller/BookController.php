@@ -152,6 +152,7 @@ class BookController extends AbstractController
         $form = $this->createForm(BookType::class, $book, ['method' => 'PUT']);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
             $bookRepository->save($book);
 
@@ -194,7 +195,6 @@ class BookController extends AbstractController
     {
         if ($book->getComments()->count()) {
             $this->addFlash('warning', 'message_book_contains_comments');
-
             return $this->redirectToRoute('book_index');
         }
 

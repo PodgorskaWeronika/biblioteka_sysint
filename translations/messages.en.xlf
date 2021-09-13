@@ -247,8 +247,26 @@
                  <source>message_book_contains_comments</source>
                  <target>You can't delete this book.</target>
              </trans-unit>
-
-
+             <trans-unit id="title_user_list">
+                 <source>title_user_list</source>
+                 <target>User list</target>
+             </trans-unit>
+             <trans-unit id="label_email">
+                 <source>label_email</source>
+                 <target>Email</target>
+             </trans-unit>
+             <trans-unit id="label_username">
+                 <source>label_username</source>
+                 <target>Username</target>
+             </trans-unit>
+             <trans-unit id="message_category_contains_book">
+                 <source>message_category_contains_book</source>
+                 <target>Category contains book</target>
+             </trans-unit>
+             <trans-unit id="label_password">
+                 <source>label_password</source>
+                 <target>Password</target>
+             </trans-unit>
         </body>
     </file>
 </xliff>

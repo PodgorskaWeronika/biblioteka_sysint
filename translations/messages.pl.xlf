@@ -252,7 +252,7 @@
              </trans-unit>
              <trans-unit id="label_user">
                  <source>label_user</source>
-                 <target>Użytkownik</target>
+                 <target>Pseudonim</target>
              </trans-unit>
              <trans-unit id="title_comment_edit">
                  <source>title_comment_edit</source>
@@ -274,6 +274,43 @@
                  <source>message_book_contains_comments</source>
                  <target>Nie można usunąć. Książka posiada komentarze.</target>
              </trans-unit>
+             <trans-unit id="title_user_list">
+                 <source>title_user_list</source>
+                 <target>Lista użytkowników</target>
+             </trans-unit>
+             <trans-unit id="label_email">
+                 <source>label_email</source>
+                 <target>Email</target>
+             </trans-unit>
+             <trans-unit id="label_username">
+                 <source>label_username</source>
+                 <target>Nazwa użytkownika</target>
+             </trans-unit>
+              <trans-unit id="label_users">
+                  <source>label_users</source>
+                  <target>Użytkownicy</target>
+              </trans-unit>
+              <trans-unit id="title_user_edit">
+                  <source>title_user_edit</source>
+                  <target>Edytuj użytkownika</target>
+              </trans-unit>
+              <trans-unit id="title_user_details">
+                  <source>title_user_details</source>
+                  <target>Szczegóły użytkownika</target>
+              </trans-unit>
+              <trans-unit id="title_user_delete">
+                  <source>title_user_delete</source>
+                  <target>Usuń użytkownika</target>
+              </trans-unit>
+             <trans-unit id="message_category_contains_book">
+                 <source>message_category_contains_book</source>
+                 <target>Nie można usunąć. Do kategorii przypisane są książki.</target>
+             </trans-unit>
+             <trans-unit id="label_password">
+                 <source>label_password</source>
+                 <target>Hasło</target>
+             </trans-unit>
+
         </body>
     </file>
 </xliff>

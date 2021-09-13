@@ -10,6 +10,8 @@
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/doctrine-migrations-bundle": "^2.2",
         "doctrine/orm": "^2.9",
+        "erusev/parsedown": "^1.7",
+        "knplabs/knp-markdown-bundle": "^1.9",
         "knplabs/knp-paginator-bundle": "^5.6",
         "phpdocumentor/reflection-docblock": "^4.3",
         "sensio/framework-extra-bundle": "^5.5",
@@ -36,8 +38,11 @@
         "symfony/validator": "4.4.*",
         "symfony/web-link": "4.4.*",
         "symfony/yaml": "4.4.*",
+        "symfonycasts/reset-password-bundle": "^1.9",
+        "symfonycasts/verify-email-bundle": "^1.5",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/intl-extra": "^3.3",
+        "twig/markdown-extra": "^3.3",
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
@@ -98,6 +103,8 @@
         "phpcs-scripts": [
             "vendor/bin/phpcs --config-set installed_paths realpath vendor/escapestudios/symfony2-coding-standard",
             "vendor/bin/phpcs --config-set default_standard Symfony"
+//            "vendor/bin/phpcs --config-set installed_paths $(realpath vendor/escapestudios/symfony2-coding-standard"),
+//            "vendor/bin/phpcs --config-set default_standard Symfony"
         ]
     },
     "conflict": {

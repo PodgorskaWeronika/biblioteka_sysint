@@ -57,16 +57,26 @@ class CommentType extends AbstractType
             ]
         );
 
+//        $builder->add(
+//            'user',
+//            EntityType::class,
+//            [
+//                'class' => User::class,
+//                'choice_label' => function ($user) {
+//                    return $user->getUsername();
+//                },
+//                'label' => 'label_user',
+//                'required' => true,
+//            ]
+//        );
+
         $builder->add(
-            'user',
-            EntityType::class,
+            'nick',
+            TextType::class,
             [
-                'class' => User::class,
-                'choice_label' => function ($user) {
-                    return $user->getUsername();
-                },
                 'label' => 'label_user',
                 'required' => true,
+                'attr' => ['max_length' => 255],
             ]
         );
     }

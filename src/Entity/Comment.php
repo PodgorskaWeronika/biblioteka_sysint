@@ -20,11 +20,11 @@ class Comment
      * @ORM\Column(type="integer")
      */
     private $id;
-//
-//    /**
-//     * @ORM\Column(type="string", length=64)
-//     */
-//    private $userName;
+
+    /**
+     * @ORM\Column(type="string", length=64)
+     */
+    private $nick;
 
     /**
      * @ORM\Column(type="text")
@@ -63,28 +63,28 @@ class Comment
      */
     private $book;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
+//    /**
+//     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
+//     * @ORM\JoinColumn(nullable=false)
+//     */
+//    private $user;
 
     public function getId(): ?int
     {
         return $this->id;
     }
-//
-//    public function getUserName(): ?string
-//    {
-//        return $this->userName;
-//    }
-//
-//    public function setUserName(string $userName): self
-//    {
-//        $this->userName = $userName;
-//
-//        return $this;
-//    }
+
+    public function getNick(): ?string
+    {
+        return $this->nick;
+    }
+
+    public function setNick(string $nick): self
+    {
+        $this->nick = $nick;
+
+        return $this;
+    }
 
     public function getContent(): ?string
     {
@@ -156,15 +156,15 @@ class Comment
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
+//    public function getUser(): ?User
+//    {
+//        return $this->user;
+//    }
+//
+//    public function setUser(?User $user): self
+//    {
+//        $this->user = $user;
+//
+//        return $this;
+//    }
 }
