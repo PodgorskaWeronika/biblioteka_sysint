@@ -3,6 +3,7 @@
 use App\Kernel;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\WebProfilerBundle;
 
 require dirname(__DIR__).'/config/bootstrap.php';
 
